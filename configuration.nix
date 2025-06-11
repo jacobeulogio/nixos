@@ -6,6 +6,7 @@
   imports = [
     ./hardware-configuration.nix
     ./modules/hyprland.nix
+    ./modules/games.nix
     ./modules/laptop.nix
     ./modules/pkgs.nix
   ];
