@@ -1,42 +1,42 @@
-
-{ config, pkgs, ... }:
-
 {
-
+  config,
+  pkgs,
+  ...
+}: {
   environment.systemPackages = with pkgs; [
     git
     gh
-
-    vim 
+    stow
+    atuin
+    yazi
+    vim
     neovim
-
+    #
     python3
     uv
-
+    #
     cargo
     rustup
     gcc
     wget
     curl
     cmake
-
-    stow
-    atuin
-    yazi 
+    #
     fzf
     fd
     p7zip
-
-    wezterm
-    tmux
-
-    zsh-powerlevel10k
-    oh-my-zsh
-    
-    qutebrowser
-    vivaldi
+    unzip
     wl-clipboard
     btop
     zoxide
+    #
+    wezterm
+    tmux
+    #
+    zsh-powerlevel10k
+    oh-my-zsh
+    #
+    qutebrowser
+    vivaldi
   ];
 }

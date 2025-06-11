@@ -1,25 +1,33 @@
-{ config, pkgs, ... }:
-
 {
-  imports =
-    [ 
-      ./hardware-configuration.nix
-      ./modules/hyprland.nix
-      ./modules/laptop.nix
-      ./modules/pkgs.nix
-    ];
+  config,
+  pkgs,
+  ...
+}: {
+  imports = [
+    ./hardware-configuration.nix
+    ./modules/hyprland.nix
+    ./modules/laptop.nix
+    ./modules/pkgs.nix
+  ];
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = ["nix-command" "flakes"];
 
   # Bootloader.
-  boot.loader.systemd-boot.enable = true;
+  boot.loader.systemd-boot.enable = false;
+
+  boot.loader.grub = {
+    enable = true;
+    device = "nodev";
+    efiSupport = true;
+  };
+
   boot.loader.efi.canTouchEfiVariables = true;
 
   # Use latest kernel.
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
-  networking.hostName = "eulogio"; 
-  # networking.wireless.enable = true;  
+  networking.hostName = "eulogio";
+  # networking.wireless.enable = true;
 
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
@@ -48,7 +56,7 @@
   services.displayManager.gdm.enable = true;
   services.desktopManager.gnome.enable = true;
 
-  # Keymaps 
+  # Keymaps
   services.xserver.xkb = {
     layout = "us";
     variant = "";
@@ -77,7 +85,7 @@
   users.users.eulogio = {
     isNormalUser = true;
     description = "Eulogio";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = ["networkmanager" "wheel"];
     packages = with pkgs; [
     ];
   };
@@ -85,13 +93,11 @@
   nixpkgs.config.allowUnfree = true;
 
   programs.zsh = {
-      enable = true;
+    enable = true;
   };
-
 
   environment.systemPackages = with pkgs; [
   ];
-
 
   users.defaultUserShell = pkgs.zsh;
 
@@ -114,7 +120,7 @@
   # };
 
   # Services
-   services.openssh.enable = true;
+  services.openssh.enable = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
@@ -129,5 +135,4 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "25.05"; # Did you read the comment?
-
 }
