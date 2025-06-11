@@ -5,6 +5,8 @@
     [ 
       ./hardware-configuration.nix
       ./modules/hyprland.nix
+      ./modules/laptop.nix
+      ./modules/pkgs.nix
     ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -43,9 +45,8 @@
   services.xserver.enable = true;
 
   # Gnome
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
-
+  services.displayManager.gdm.enable = true;
+  services.desktopManager.gnome.enable = true;
 
   # Keymaps 
   services.xserver.xkb = {
@@ -56,7 +57,7 @@
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
-  # Enable sound with pipewire.
+  # Sound
   services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
@@ -89,32 +90,6 @@
 
 
   environment.systemPackages = with pkgs; [
-    btop
-    zoxide
-    python3
-    uv
-    vim 
-    neovim
-    gcc
-    wget
-    git
-    gh
-    stow
-    atuin
-    yazi 
-    fzf
-    fd
-    curl
-    wezterm
-    tmux
-    zsh-powerlevel10k
-    oh-my-zsh
-    cmake
-    p7zip
-    qutebrowser
-    vivaldi
-    wl-clipboard
-    supergfxctl
   ];
 
 
