@@ -6,6 +6,8 @@
       ./hardware-configuration.nix
     ];
 
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -20,13 +22,10 @@
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
-  # Enable networking
   networking.networkmanager.enable = true;
 
-  # Set your time zone.
   time.timeZone = "Asia/Manila";
 
-  # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
 
   i18n.extraLocaleSettings = {
@@ -41,19 +40,19 @@
     LC_TIME = "en_PH.UTF-8";
   };
 
-  # Enable the X11 windowing system.
   services.xserver.enable = true;
 
-  # Enable the XFCE Desktop Environment.
+  # Gnome
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
 
+  # Hyprland
   programs.hyprland = {
   enable = true;
   xwayland.enable = true;
   };
 
-  # Configure keymap in X11
+  # Keymaps 
   services.xserver.xkb = {
     layout = "us";
     variant = "";
@@ -90,10 +89,15 @@
   nixpkgs.config.allowUnfree = true;
 
   programs.zsh = {
-  enable = true;
+      enable = true;
   };
 
+
   environment.systemPackages = with pkgs; [
+    btop
+    zoxide
+    python3
+    uv
     vim 
     neovim
     gcc
@@ -126,6 +130,7 @@
     cliphist
     wl-clipboard
     swaynotificationcenter
+    supergfxctl
     papirus-icon-theme
   ];
 
