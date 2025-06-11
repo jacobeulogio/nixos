@@ -4,6 +4,7 @@
   imports =
     [ 
       ./hardware-configuration.nix
+      ./modules/hyprland.nix
     ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -15,10 +16,9 @@
   # Use latest kernel.
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
-  networking.hostName = "nixos"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+  networking.hostName = "eulogio"; 
+  # networking.wireless.enable = true;  
 
-  # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
@@ -46,11 +46,6 @@
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
 
-  # Hyprland
-  programs.hyprland = {
-  enable = true;
-  xwayland.enable = true;
-  };
 
   # Keymaps 
   services.xserver.xkb = {
@@ -115,23 +110,11 @@
     zsh-powerlevel10k
     oh-my-zsh
     cmake
-    rofi-wayland
-    waybar
     p7zip
-    nwg-look
-    pavucontrol
     qutebrowser
     vivaldi
-    hyprpaper
-    rofi-wayland
-    waybar
-    blueman
-    networkmanagerapplet
-    cliphist
     wl-clipboard
-    swaynotificationcenter
     supergfxctl
-    papirus-icon-theme
   ];
 
 
