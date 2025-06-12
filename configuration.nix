@@ -6,9 +6,9 @@
   imports = [
     ./hardware-configuration.nix
     ./modules/hyprland.nix
-    ./modules/games.nix
     ./modules/laptop.nix
     ./modules/pkgs.nix
+    ./modules/games.nix
   ];
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
@@ -51,12 +51,20 @@
   };
 
   services.xserver.enable = true;
-
-  # Gnome
-  services.displayManager.sddm.enable = true;
+  services.displayManager.sddm = {
+    enable = true;
+    enableHidpi = true;
+    theme = "sugar-dark";
+  };
   services.desktopManager.gnome.enable = true;
 
-  # Keymaps
+  environment.systemPackages = with pkgs; [
+    sddm-sugar-dark
+    libsForQt5.qt5.qtgraphicaleffects
+    libsForQt5.qt5.qtquickcontrols2
+    libsForQt5.qt5.qtsvg
+  ];
+
   services.xserver.xkb = {
     layout = "us";
     variant = "";
