@@ -17,17 +17,16 @@
     yazi
     vim
     neovim
-    #
+
     python3
     uv
-    #
     cargo
     rustup
     gcc
     wget
     curl
     cmake
-    #
+
     fzf
     fd
     p7zip
@@ -35,13 +34,14 @@
     wl-clipboard
     btop
     zoxide
-    #
+    linuxKernel.packages.linux_zen.cpupower
+
     wezterm
     tmux
-    #
+
     zsh-powerlevel10k
     oh-my-zsh
-    #
+
     qutebrowser
     vivaldi
   ];

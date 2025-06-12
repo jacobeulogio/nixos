@@ -14,8 +14,6 @@
   nix.settings.experimental-features = ["nix-command" "flakes"];
 
   # Bootloader.
-  boot.loader.systemd-boot.enable = false;
-
   boot.loader.grub = {
     enable = true;
     device = "nodev";
