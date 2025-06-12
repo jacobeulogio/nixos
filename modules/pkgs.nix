@@ -3,6 +3,12 @@
   pkgs,
   ...
 }: {
+  programs.zsh = {
+    enable = true;
+  };
+
+  users.defaultUserShell = pkgs.zsh;
+
   environment.systemPackages = with pkgs; [
     git
     gh
@@ -38,5 +44,15 @@
     #
     qutebrowser
     vivaldi
+  ];
+
+  fonts.packages = with pkgs; [
+    noto-fonts
+    noto-fonts-cjk-sans
+    noto-fonts-emoji
+    liberation_ttf
+    fira-code
+    fira-code-symbols
+    nerd-fonts.jetbrains-mono
   ];
 }

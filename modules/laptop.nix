@@ -3,7 +3,7 @@
   pkgs,
   ...
 }: {
-  boot.kernelParams = ["quiet" "amd_pstate=active"];
+  boot.kernelParams = ["quiet" "amd_pstate=active" "amdgpu.ppfeaturemask=0xfff7bfff"];
 
   powerManagement.enable = true;
   services.power-profiles-daemon.enable = false;

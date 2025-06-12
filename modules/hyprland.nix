@@ -30,5 +30,6 @@
     libsForQt5.qt5.qtwayland
     kdePackages.qt6ct
     kdePackages.qtwayland
+    libnotify
   ];
 }
