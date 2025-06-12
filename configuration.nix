@@ -54,12 +54,12 @@
   services.displayManager.sddm = {
     enable = true;
     enableHidpi = true;
-    theme = "sugar-dark";
+    theme = "chili";
   };
   services.desktopManager.gnome.enable = true;
 
   environment.systemPackages = with pkgs; [
-    sddm-sugar-dark
+    sddm-chili-theme
     libsForQt5.qt5.qtgraphicaleffects
     libsForQt5.qt5.qtquickcontrols2
     libsForQt5.qt5.qtsvg
