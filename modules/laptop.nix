@@ -27,14 +27,7 @@
       AMDGPU_ABM_LEVEL_ON_BAT = 3;
       STOP_CHARGE_THRESH_BAT0 = 85;
       USB_AUTOSUSPEND = 0;
-    };
-  };
-
-  services.auto-epp = {
-    enable = true;
-    settings = {
-      state.epp_state_for_AC = "performance";
-      state.epp_state_for_BAT = "balance_power";
+      RUNTIME_PM_DRIVER_DENYLIST = "mei_me";
     };
   };
 

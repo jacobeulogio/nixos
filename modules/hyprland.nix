@@ -31,5 +31,6 @@
     kdePackages.qt6ct
     kdePackages.qtwayland
     libnotify
+    brightnessctl
   ];
 }
