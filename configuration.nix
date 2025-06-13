@@ -91,7 +91,7 @@
   users.users.eulogio = {
     isNormalUser = true;
     description = "Eulogio";
-    extraGroups = ["networkmanager" "wheel"];
+    extraGroups = ["networkmanager" "wheel" "audio" "video"];
     packages = with pkgs; [
     ];
   };
