@@ -7,6 +7,8 @@
     enable = true;
   };
 
+  programs.nix-ld.enable = true;
+
   users.defaultUserShell = pkgs.zsh;
 
   environment.systemPackages = with pkgs; [
@@ -18,6 +20,9 @@
     vim
     neovim
 
+    nix-ld
+    nodejs
+    rust-analyzer
     python3
     uv
     cargo
@@ -26,6 +31,9 @@
     wget
     curl
     cmake
+    ruff
+    lua-language-server
+    stylua
 
     fzf
     fd
