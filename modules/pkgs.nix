@@ -1,8 +1,4 @@
-{
-  config,
-  pkgs,
-  ...
-}: {
+{ config, pkgs, ... }: {
   programs.zsh = {
     enable = true;
   };
@@ -11,47 +7,37 @@
 
   users.defaultUserShell = pkgs.zsh;
 
-  environment.systemPackages = with pkgs; [
-    git
-    gh
-    stow
-    atuin
-    yazi
-    vim
-    neovim
+  services.keyd = {
+    enable = true;
+    keyboards.default = {
+      ids = ["*"]; # Applies to all keyboards
+      settings = {
+        main = {
+          # Remap Caps Lock to Home
+          capslock = "home";
+        };
+      };
+    };
+  };
 
+  environment.systemPackages = with pkgs; [
+    git gh
+    atuin yazi
+    vim neovim
     nix-ld
     nodejs
-    rust-analyzer
-    python3
-    uv
-    cargo
-    rustup
-    gcc
-    wget
-    curl
-    cmake
-    ruff
-    lua-language-server
-    stylua
-
-    fzf
-    fd
-    p7zip
-    unzip
+    python3 uv ruff python313Packages.pip
+    cargo rust-analyzer rustup
+    gcc cmake
+    wget curl
+    lua-language-server stylua
+    btop fzf fd zoxide stow
+    p7zip unzip
     wl-clipboard
-    btop
-    zoxide
     linuxKernel.packages.linux_zen.cpupower
-
-    wezterm
-    tmux
-
-    zsh-powerlevel10k
-    oh-my-zsh
-
-    qutebrowser
-    vivaldi
+    wezterm tmux python313Packages.libtmux 
+    zsh-powerlevel10k oh-my-zsh
+    qutebrowser python313Packages.adblock vivaldi
   ];
 
   fonts.packages = with pkgs; [
