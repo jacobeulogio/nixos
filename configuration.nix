@@ -35,6 +35,7 @@
     LC_TIME = "en_PH.UTF-8";
   };
 
+  services.displayManager.sddm.wayland.enable = true;
   services.displayManager.sddm = {
     enable = true;
     # enableHidpi = true;
