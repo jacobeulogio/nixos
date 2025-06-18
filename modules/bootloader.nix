@@ -1,7 +1,8 @@
 { config, pkgs, ... }:
 
 {
-  boot.kernelPackages = lib.mkForce pkgs.linuxPackages_cachyos;
+  boot.kernelPackages = pkgs.linuxPackages_cachyos;
+  # boot.kernelPackages = pkgs.linuxPackages_latest;
 
   boot.loader.grub = {
     enable = true;
@@ -11,5 +12,4 @@
 
   boot.loader.efi.canTouchEfiVariables = true;
 
-  boot.kernelPackages = pkgs.linuxPackages_latest;
 }

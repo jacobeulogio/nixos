@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  chaotic,
   ...
 }: {
   boot.kernelParams = ["quiet" "amd_pstate=active" "amdgpu.ppfeaturemask=0xfff7bfff"];

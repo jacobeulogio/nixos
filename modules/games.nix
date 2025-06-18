@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+chaotic,
   ...
 }: {
   programs.steam = {
@@ -9,6 +10,8 @@
     dedicatedServer.openFirewall = true;
     localNetworkGameTransfers.openFirewall = true;
   };
+
+  chaotic.mesa-git.enable = true;
 
   environment.systemPackages = with pkgs; [
     mangohud
