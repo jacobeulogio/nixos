@@ -1,28 +1,15 @@
-{
-  config,
-  pkgs,
-  ...
-}: {
+{ config, pkgs, ... }: {
+
   imports = [
     ./hardware-configuration.nix
     ./modules/hyprland.nix
-    ./modules/laptop.nix
+    ./modules/laptop_amd.nix
     ./modules/pkgs.nix
     ./modules/games.nix
+    ./modules/bootloader.nix
   ];
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
-
-  # Bootloader.
-  boot.loader.grub = {
-    enable = true;
-    device = "nodev";
-    efiSupport = true;
-  };
-  boot.loader.efi.canTouchEfiVariables = true;
-
-  # Use latest kernel.
-  boot.kernelPackages = pkgs.linuxPackages_latest;
 
   networking.hostName = "eulogio";
   # networking.wireless.enable = true;
@@ -48,25 +35,23 @@
     LC_TIME = "en_PH.UTF-8";
   };
 
-  services.xserver.enable = true;
   services.displayManager.sddm = {
     enable = true;
-    enableHidpi = true;
-    theme = "chili";
+    # enableHidpi = true;
+    # theme = "sddm-astronaut-theme";
+    settings = {
+      Theme = {
+        Current = "chili";
+        ThemeDir = "/sddm-themes";
+      };
+    };
   };
+
   services.desktopManager.gnome.enable = true;
 
   environment.systemPackages = with pkgs; [
     sddm-chili-theme
-    libsForQt5.qt5.qtgraphicaleffects
-    libsForQt5.qt5.qtquickcontrols2
-    libsForQt5.qt5.qtsvg
   ];
-
-  services.xserver.xkb = {
-    layout = "us";
-    variant = "";
-  };
 
   # Enable CUPS to print documents.
   services.printing.enable = true;

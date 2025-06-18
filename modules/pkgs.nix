@@ -10,10 +10,9 @@
   services.keyd = {
     enable = true;
     keyboards.default = {
-      ids = ["*"]; # Applies to all keyboards
+      ids = ["*"]; 
       settings = {
         main = {
-          # Remap Caps Lock to Home
           capslock = "home";
         };
       };
@@ -21,22 +20,33 @@
   };
 
   environment.systemPackages = with pkgs; [
+    # Main
     git gh
-    atuin yazi
+    atuin yazi stow 
     vim neovim
     nix-ld
+
+    # Languages
     nodejs
     python3 uv ruff python313Packages.pip
     cargo rust-analyzer rustup
     gcc cmake
     wget curl
     lua-language-server stylua
-    btop fzf fd zoxide stow
+
+    # Misc
+    btop fzf fd zoxide tree 
     p7zip unzip
     wl-clipboard
     linuxKernel.packages.linux_zen.cpupower
+
+    # Terminal and Tmux
     wezterm tmux python313Packages.libtmux 
+
+    # Zsh
     zsh-powerlevel10k oh-my-zsh
+
+    # Browsers
     qutebrowser python313Packages.adblock vivaldi
   ];
 
