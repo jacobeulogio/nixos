@@ -38,8 +38,8 @@
   services.displayManager.sddm.wayland.enable = true;
   services.displayManager.sddm = {
     enable = true;
-    # enableHidpi = true;
-    # theme = "sddm-astronaut-theme";
+    enableHidpi = true;
+    # theme = "chili";
     settings = {
       Theme = {
         Current = "chili";
