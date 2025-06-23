@@ -20,25 +20,24 @@
   };
 
   environment.systemPackages = with pkgs; [
-    # Main
+    # Core Utils
     git gh
-    atuin yazi stow 
     vim neovim
+    wget curl
+    btop 
+    fzf fd ripgrep zoxide tree 
+    p7zip unzip 
+    linuxKernel.packages.linux_zen.cpupower
+    atuin yazi stow 
+    wl-clipboard
     nix-ld
 
     # Languages
-    nodejs
     python3 uv ruff python313Packages.pip
     cargo rust-analyzer rustup
     gcc cmake
-    wget curl
     lua-language-server stylua
-
-    # Misc
-    btop fzf fd zoxide tree 
-    p7zip unzip
-    wl-clipboard
-    linuxKernel.packages.linux_zen.cpupower
+    nodejs
 
     # Terminal and Tmux
     wezterm tmux python313Packages.libtmux 
@@ -52,11 +51,7 @@
 
   fonts.packages = with pkgs; [
     noto-fonts
-    noto-fonts-cjk-sans
     noto-fonts-emoji
-    liberation_ttf
-    fira-code
-    fira-code-symbols
     nerd-fonts.jetbrains-mono
   ];
 }

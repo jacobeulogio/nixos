@@ -4,7 +4,7 @@
     ./hardware-configuration.nix
     ./modules/hyprland.nix
     ./modules/laptop_amd.nix
-    ./modules/pkgs.nix
+    ./modules/core.nix
     ./modules/games.nix
     ./modules/bootloader.nix
   ];
