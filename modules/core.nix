@@ -47,6 +47,15 @@
 
     # Browsers
     qutebrowser python313Packages.adblock vivaldi
+
+    via
+    vial
+  ];
+  
+  hardware.keyboard.qmk.enable = true;
+  services.udev.packages = [ 
+    pkgs.via
+    pkgs.vial
   ];
 
   fonts.packages = with pkgs; [
