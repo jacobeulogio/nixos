@@ -3,17 +3,25 @@
   imports = [
     ./hardware-configuration.nix
     ./modules/hyprland.nix
-    ./modules/laptop_amd.nix
     ./modules/core.nix
-    ./modules/games.nix
     ./modules/bootloader.nix
+    ./modules/work.nix
+    # ./modules/laptop_amd.nix
+    # ./modules/games.nix
   ];
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
 
+  users.users.eulogio = {
+    isNormalUser = true;
+    description = "Eulogio";
+    extraGroups = [ "networkmanager" "wheel" "audio" "video" "docker" ];
+    packages = with pkgs; [
+    ];
+  };
+
   networking.hostName = "eulogio";
   # networking.wireless.enable = true;
-
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
@@ -73,15 +81,6 @@
     #media-session.enable = true;
   };
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.eulogio = {
-    isNormalUser = true;
-    description = "Eulogio";
-    extraGroups = ["networkmanager" "wheel" "audio" "video"];
-    packages = with pkgs; [
-    ];
-  };
-
   nixpkgs.config.allowUnfree = true;
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -101,11 +100,5 @@
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 
-  # This value determines the NixOS release from which the default
-  # settings for stateful data, like file locations and database versions
-  # on your system were taken. It‘s perfectly fine and recommended to leave
-  # this value at the release version of the first install of this system.
-  # Before changing this value read the documentation for this option
-  # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "25.05"; # Did you read the comment?
 }

@@ -38,5 +38,6 @@
   environment.systemPackages = with pkgs; [
     supergfxctl
     asusctl
+    linuxKernel.packages.linux_zen.cpupower
   ];
 }

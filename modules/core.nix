@@ -1,4 +1,5 @@
 { config, pkgs, ... }: {
+
   programs.zsh = {
     enable = true;
   };
@@ -7,19 +8,8 @@
 
   users.defaultUserShell = pkgs.zsh;
 
-  services.keyd = {
-    enable = true;
-    keyboards.default = {
-      ids = ["*"]; 
-      settings = {
-        main = {
-          capslock = "home";
-        };
-      };
-    };
-  };
-
   environment.systemPackages = with pkgs; [
+
     # Core Utils
     git gh
     vim neovim
@@ -27,17 +17,17 @@
     btop 
     fzf fd ripgrep zoxide tree 
     p7zip unzip 
-    linuxKernel.packages.linux_zen.cpupower
     atuin yazi stow 
     wl-clipboard
     nix-ld
 
-    # Languages
+    # Dev
     python3 uv ruff python313Packages.pip
     cargo rust-analyzer rustup
     gcc cmake
     lua-language-server stylua
     nodejs
+    dbeaver-bin
 
     # Terminal and Tmux
     wezterm tmux python313Packages.libtmux 
@@ -54,4 +44,7 @@
     noto-fonts-emoji
     nerd-fonts.jetbrains-mono
   ];
+
+  # Docker
+  virtualisation.docker.enable = true;
 }
