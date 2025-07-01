@@ -10,8 +10,8 @@
   services.power-profiles-daemon.enable = false;
 
   services.logind.lidSwitch = "suspend";
-  services.logind.lidSwitchExternalPower = "lock";
-  services.logind.lidSwitchDocked = "ignore";
+  services.logind.lidSwitchExternalPower = "suspend";
+  services.logind.lidSwitchDocked = "suspend";
 
   services.tlp = {
     enable = true;
