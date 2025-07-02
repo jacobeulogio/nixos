@@ -20,6 +20,7 @@
     atuin yazi stow 
     wl-clipboard
     nix-ld
+    steam-run
 
     # Dev
     python3 uv ruff python313Packages.pip
@@ -28,7 +29,8 @@
     lua-language-server stylua
     nodejs
     dbeaver-bin
-
+    jdk8_javafx
+    
     # Terminal and Tmux
     wezterm tmux python313Packages.libtmux 
 
@@ -43,6 +45,13 @@
     noto-fonts
     noto-fonts-emoji
     nerd-fonts.jetbrains-mono
+  ];
+
+  # Keyboard
+  hardware.keyboard.qmk.enable = true;
+  services.udev.packages = with pkgs; [ 
+    via
+    vial
   ];
 
   # Docker
