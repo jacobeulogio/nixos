@@ -1,11 +1,17 @@
-{ config, pkgs, ... }: {
+{ config, pkgs, ... }:
+{
 
   programs.zsh = {
     enable = true;
   };
 
-  programs.nix-ld.enable = true;
+  programs.java = { 
+    enable = true;
+  };
 
+  services.flatpak.enable = true; 
+
+  programs.nix-ld.enable = true;
   users.defaultUserShell = pkgs.zsh;
 
   environment.systemPackages = with pkgs; [
@@ -28,8 +34,9 @@
     gcc cmake
     lua-language-server stylua
     nodejs
-    dbeaver-bin
-    jdk8_javafx
+    beekeeper-studio
+    # dbeaver-bin
+    jdk21
     
     # Terminal and Tmux
     wezterm tmux python313Packages.libtmux 
@@ -39,6 +46,14 @@
 
     # Browsers
     qutebrowser python313Packages.adblock vivaldi
+
+    gtk3
+    gtk4
+    glib
+  ];
+
+    nixpkgs.config.permittedInsecurePackages = [
+    "beekeeper-studio-5.2.12"
   ];
 
   fonts.packages = with pkgs; [
@@ -53,7 +68,7 @@
     via
     vial
   ];
-
+  
   # Docker
   virtualisation.docker.enable = true;
 }
