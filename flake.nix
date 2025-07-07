@@ -11,9 +11,7 @@
       system = "x86_64-linux";
       modules = [
         ./configuration.nix 
-        chaotic.nixosModules.nyx-cache
-        chaotic.nixosModules.nyx-overlay
-        chaotic.nixosModules.nyx-registry
+        chaotic.nixosModules.default
       ];
     };
   };

@@ -39,13 +39,13 @@
   services.displayManager.sddm = {
     enable = true;
     enableHidpi = true;
-    # theme = "chili";
-    settings = {
-      Theme = {
-        Current = "chili";
-        ThemeDir = "/sddm-themes";
-      };
-    };
+    theme = "chili";
+    # settings = {
+    #   Theme = {
+    #     Current = "chili";
+    #     ThemeDir = "/sddm-themes";
+    #   };
+    # };
   };
 
   services.desktopManager.gnome.enable = true;
@@ -77,7 +77,7 @@
   users.users.eulogio = {
     isNormalUser = true;
     description = "Eulogio";
-    extraGroups = ["networkmanager" "wheel" "audio" "video"];
+    extraGroups = ["networkmanager" "wheel" "audio" "video" "docker"];
     packages = with pkgs; [
     ];
   };
