@@ -14,6 +14,7 @@
   programs.nix-ld.enable = true;
   users.defaultUserShell = pkgs.zsh;
 
+  environment.lovalBinInPath = true;
   environment.systemPackages = with pkgs; [
 
     # Core Utils
