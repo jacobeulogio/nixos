@@ -6,7 +6,7 @@
     ensureDatabases = [ "analytics" ];
     package = pkgs.postgresql_17;
     enableTCPIP = true;
-    extraPlugins = with pkgs; [ postgresql17Packages.tds_fdw ];
+    extensions = with pkgs; [ postgresql17Packages.tds_fdw ];
     authentication = pkgs.lib.mkOverride 10 ''
       # type database     DBuser  address            auth-method
       local  all          all                        trust
@@ -24,6 +24,6 @@
   };
 
   environment.systemPackages = with pkgs; [
-    # postgresql17Packages.tds_fdw
+   onlyoffice-desktopeditors
   ];
 }
