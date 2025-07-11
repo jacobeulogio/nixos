@@ -8,6 +8,7 @@
   users.defaultUserShell = pkgs.zsh;
 
   environment.localBinInPath = true;
+
   environment.systemPackages = with pkgs; [
 
     # Core Utils
@@ -16,7 +17,7 @@
     wget curl
     btop 
     fzf fd ripgrep zoxide tree 
-    p7zip unzip 
+    p7zip unzip ffmpeg jq poppler resvg imagemagick
     linuxKernel.packages.linux_zen.cpupower
     atuin yazi stow 
     wl-clipboard
