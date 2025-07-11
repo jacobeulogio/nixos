@@ -23,7 +23,7 @@
     wget curl
     btop 
     fzf fd ripgrep zoxide tree 
-    p7zip unzip 
+    p7zip unzip ffmpeg jq poppler resvg imagemagick
     atuin yazi stow 
     wl-clipboard
     nix-ld
@@ -35,7 +35,7 @@
     gcc cmake
     lua-language-server stylua
     nodejs
-    # dbeaver-bin
+    # dbeaver-bin # Use Flatpak
     jdk21
     gemini-cli
     
@@ -47,14 +47,6 @@
 
     # Browsers
     qutebrowser python313Packages.adblock vivaldi
-
-    gtk3
-    gtk4
-    glib
-  ];
-
-    nixpkgs.config.permittedInsecurePackages = [
-    "beekeeper-studio-5.2.12"
   ];
 
   fonts.packages = with pkgs; [
