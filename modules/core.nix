@@ -7,7 +7,9 @@
 
   users.defaultUserShell = pkgs.zsh;
 
+  environment.localBinInPath = true;
   environment.systemPackages = with pkgs; [
+
     # Core Utils
     git gh
     vim neovim
@@ -26,9 +28,10 @@
     gcc cmake
     lua-language-server stylua
     nodejs
+    gemini-cli
 
     # Terminal and Tmux
-    wezterm tmux python313Packages.libtmux 
+    wezterm tmux 
 
     # Zsh
     zsh-powerlevel10k oh-my-zsh
@@ -36,8 +39,7 @@
     # Browsers
     qutebrowser python313Packages.adblock vivaldi
 
-    via
-    vial
+    via vial
   ];
 
   hardware.keyboard.qmk.enable = true;
