@@ -14,7 +14,7 @@
   programs.nix-ld.enable = true;
   users.defaultUserShell = pkgs.zsh;
 
-  environment.lovalBinInPath = true;
+  environment.localBinInPath = true;
   environment.systemPackages = with pkgs; [
 
     # Core Utils
@@ -35,9 +35,9 @@
     gcc cmake
     lua-language-server stylua
     nodejs
-    beekeeper-studio
     # dbeaver-bin
     jdk21
+    gemini-cli
     
     # Terminal and Tmux
     wezterm tmux python313Packages.libtmux 
