@@ -35,7 +35,7 @@
     LC_TIME = "en_PH.UTF-8";
   };
 
-  services.displayManager.gdm.wayland.enable = true;
+  services.displayManager.gdm.enable = true;
   # services.displayManager.sddm = {
   #   enable = true;
   #   enableHidpi = true;
@@ -46,12 +46,12 @@
     #     ThemeDir = "/sddm-themes";
     #   };
     # };
-  };
+  # };
 
   services.desktopManager.gnome.enable = true;
 
-  environment.systemPackages = with pkgs; [
-  ];
+  # environment.systemPackages = with pkgs; [
+  # ];
 
   # Enable CUPS to print documents.
   services.printing.enable = true;

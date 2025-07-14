@@ -25,7 +25,7 @@
     nix-ld
 
     # Languages
-    python3 uv ruff python313Packages.pip python313Packages.python-lsp-server 
+    python3 uv ruff python313Packages.pip 
     cargo rust-analyzer rustup
     gcc cmake
     lua-language-server stylua
