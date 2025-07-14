@@ -35,11 +35,11 @@
     LC_TIME = "en_PH.UTF-8";
   };
 
-  services.displayManager.sddm.wayland.enable = true;
-  services.displayManager.sddm = {
-    enable = true;
-    enableHidpi = true;
-    theme = "chili";
+  services.displayManager.gdm.wayland.enable = true;
+  # services.displayManager.sddm = {
+  #   enable = true;
+  #   enableHidpi = true;
+  #   theme = "chili";
     # settings = {
     #   Theme = {
     #     Current = "chili";
@@ -51,7 +51,6 @@
   services.desktopManager.gnome.enable = true;
 
   environment.systemPackages = with pkgs; [
-    sddm-chili-theme
   ];
 
   # Enable CUPS to print documents.

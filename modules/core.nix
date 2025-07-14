@@ -1,4 +1,5 @@
 { config, pkgs, ... }: {
+
   programs.zsh = {
     enable = true;
   };
@@ -24,7 +25,7 @@
     nix-ld
 
     # Languages
-    python3 uv ruff python313Packages.pip
+    python3 uv ruff python313Packages.pip python313Packages.python-lsp-server 
     cargo rust-analyzer rustup
     gcc cmake
     lua-language-server stylua
@@ -53,5 +54,8 @@
     noto-fonts
     noto-fonts-emoji
     nerd-fonts.jetbrains-mono
+    nerd-fonts.commit-mono
   ];
+  fonts.fontDir.enable = true;
+  fonts.fontconfig.enable = true;
 }
