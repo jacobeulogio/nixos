@@ -4,6 +4,7 @@
   programs.zsh = {
     enable = true;
   };
+  users.defaultUserShell = pkgs.zsh;
 
   programs.java = { 
     enable = true;
@@ -12,9 +13,8 @@
   services.flatpak.enable = true; 
 
   programs.nix-ld.enable = true;
-  users.defaultUserShell = pkgs.zsh;
-
   environment.localBinInPath = true;
+
   environment.systemPackages = with pkgs; [
 
     # Core Utils
@@ -35,7 +35,6 @@
     gcc cmake
     lua-language-server stylua
     nodejs
-    # dbeaver-bin # Use Flatpak
     jdk21
     gemini-cli
     
@@ -53,7 +52,10 @@
     noto-fonts
     noto-fonts-emoji
     nerd-fonts.jetbrains-mono
+    nerd-fonts.commit-mono
   ];
+  fonts.fontDir.enable = true;
+  fonts.fontconfig.enable = true;
 
   # Keyboard
   hardware.keyboard.qmk.enable = true;

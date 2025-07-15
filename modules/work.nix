@@ -17,6 +17,7 @@
 
       # Allow Docker Container Access
       host   all          all     172.18.0.0/16      scram-sha-256
+      host   all          all     172.19.0.0/16      scram-sha-256
     '';
     settings = { 
       listen_addresses = "*";
