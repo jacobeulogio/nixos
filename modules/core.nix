@@ -1,6 +1,5 @@
 { config, pkgs, ... }:
 {
-
   programs.zsh = {
     enable = true;
   };
@@ -16,7 +15,6 @@
   environment.localBinInPath = true;
 
   environment.systemPackages = with pkgs; [
-
     # Core Utils
     git gh
     vim neovim
@@ -53,17 +51,16 @@
     noto-fonts-emoji
     nerd-fonts.jetbrains-mono
     nerd-fonts.commit-mono
+    nerd-fonts.geist-mono
   ];
   fonts.fontDir.enable = true;
   fonts.fontconfig.enable = true;
 
-  # Keyboard
   hardware.keyboard.qmk.enable = true;
   services.udev.packages = with pkgs; [ 
     via
     vial
   ];
   
-  # Docker
   virtualisation.docker.enable = true;
 }
