@@ -11,6 +11,7 @@
   services.blueman.enable = true;
 
   environment.systemPackages = with pkgs; [
+    hyprpicker
     rofi-wayland
     waybar
     nwg-look

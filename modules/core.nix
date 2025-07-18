@@ -5,26 +5,22 @@
   };
   users.defaultUserShell = pkgs.zsh;
 
-  programs.java = { 
-    enable = true;
-  };
-
-  services.flatpak.enable = true; 
-
   programs.nix-ld.enable = true;
   environment.localBinInPath = true;
+
+  programs.neovim = {
+    enable = true;
+    defaultEditor = true;
+  };
 
   environment.systemPackages = with pkgs; [
     # Core Utils
     git gh
-    vim neovim
-    wget curl
-    btop 
-    fzf fd ripgrep zoxide tree 
-    p7zip unzip ffmpeg jq poppler resvg imagemagick
     atuin yazi stow 
-    wl-clipboard
-    nix-ld
+    wget curl
+    btop tree wl-clipboard
+    fzf fd ripgrep zoxide
+    p7zip unzip ffmpeg jq poppler resvg imagemagick
     steam-run
 
     # Dev
@@ -33,11 +29,10 @@
     gcc cmake
     lua-language-server stylua
     nodejs
-    jdk21
     gemini-cli
     
     # Terminal and Tmux
-    wezterm tmux python313Packages.libtmux 
+    wezterm tmux 
 
     # Zsh
     zsh-powerlevel10k oh-my-zsh
@@ -50,7 +45,6 @@
     noto-fonts
     noto-fonts-emoji
     nerd-fonts.jetbrains-mono
-    nerd-fonts.commit-mono
     nerd-fonts.geist-mono
   ];
   fonts.fontDir.enable = true;
@@ -62,5 +56,6 @@
     vial
   ];
   
+  services.flatpak.enable = true; 
   virtualisation.docker.enable = true;
 }
