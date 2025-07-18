@@ -28,9 +28,7 @@
   networking.networkmanager.enable = true;
 
   time.timeZone = "Asia/Manila";
-
   i18n.defaultLocale = "en_US.UTF-8";
-
   i18n.extraLocaleSettings = {
     LC_ADDRESS = "en_PH.UTF-8";
     LC_IDENTIFICATION = "en_PH.UTF-8";
@@ -43,29 +41,21 @@
     LC_TIME = "en_PH.UTF-8";
   };
 
-  services.displayManager.sddm.wayland.enable = true;
-  services.displayManager.sddm = {
+  # Services
+  services.xserver = {                                                       
+        enable = true;                                                          
+        xkb.options = "caps:swapescape";
+  };                                                                           
+
+  services.xserver.displayManager.gdm = {
     enable = true;
-    enableHidpi = true;
-    # theme = "chili";
-    settings = {
-      Theme = {
-        Current = "chili";
-        ThemeDir = "/sddm-themes";
-      };
-    };
+    wayland = true;
   };
 
   services.desktopManager.gnome.enable = true;
 
-  environment.systemPackages = with pkgs; [
-    sddm-chili-theme
-  ];
-
-  # Enable CUPS to print documents.
+  services.openssh.enable = true;
   services.printing.enable = true;
-
-  # Sound
   services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
@@ -73,11 +63,7 @@
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
-    # If you want to use JACK applications, uncomment this
     #jack.enable = true;
-
-    # use the example session manager (no others are packaged yet so this is enabled by default,
-    # no need to redefine it in your config for now)
     #media-session.enable = true;
   };
 
@@ -91,14 +77,11 @@
   #   enableSSHSupport = true;
   # };
 
-  # Services
-  services.openssh.enable = true;
 
-  # Open ports in the firewall.
+  # Firewall.
   networking.firewall.allowedTCPPorts = [ 5432 ];
   # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 
-  system.stateVersion = "25.05"; # Did you read the comment?
+  system.stateVersion = "25.05"; 
 }
