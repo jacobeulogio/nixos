@@ -47,15 +47,15 @@
         xkb.options = "caps:swapescape";
   };                                                                           
 
-  services.xserver.displayManager.gdm = {
+  services.displayManager.gdm = {
     enable = true;
     wayland = true;
   };
-
   services.desktopManager.gnome.enable = true;
 
   services.openssh.enable = true;
   services.printing.enable = true;
+
   services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
