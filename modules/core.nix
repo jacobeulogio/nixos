@@ -54,7 +54,9 @@
     noto-fonts
     noto-fonts-emoji
     nerd-fonts.jetbrains-mono
-    nerd-fonts.commit-mono
+    nerd-fonts.hack
+    nerd-fonts.geist-mono
+    nerd-fonts.roboto-mono
   ];
   fonts.fontDir.enable = true;
   fonts.fontconfig.enable = true;
