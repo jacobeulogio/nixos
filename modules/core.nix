@@ -19,10 +19,8 @@
     btop 
     fzf fd ripgrep zoxide tree 
     p7zip unzip ffmpeg jq poppler resvg imagemagick
-    linuxKernel.packages.linux_zen.cpupower
     atuin yazi stow 
     wl-clipboard
-    nix-ld
 
     # Languages
     python3 uv ruff python313Packages.pip 
