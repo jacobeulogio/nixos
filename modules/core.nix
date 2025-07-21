@@ -16,6 +16,7 @@
   environment.systemPackages = with pkgs; [
     # Core Utils
     git gh
+    vim
     atuin yazi stow 
     wget curl
     btop tree wl-clipboard
@@ -30,6 +31,7 @@
     lua-language-server stylua
     nodejs
     gemini-cli
+    go gopls
     
     # Terminal and Tmux
     wezterm tmux 
