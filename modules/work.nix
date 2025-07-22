@@ -12,6 +12,7 @@
       local  all          all                        trust
       local  replication  all                        peer
       host   all          all     127.0.0.1/32       scram-sha-256
+      host   all          eulogio 192.168.0.0/16     scram-sha-256
       host   all          mark    192.168.181.72/24  scram-sha-256
       host   all          all     ::1/128            scram-sha-256
 
