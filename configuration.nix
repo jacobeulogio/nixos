@@ -79,7 +79,7 @@
 
 
   # Firewall.
-  networking.firewall.allowedTCPPorts = [ 5432 ];
+  networking.firewall.allowedTCPPorts = [ 5432 5000 8080 ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # networking.firewall.enable = false;
 
