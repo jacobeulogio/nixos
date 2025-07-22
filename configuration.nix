@@ -5,7 +5,8 @@
     ./modules/hyprland.nix
     ./modules/core.nix
     ./modules/bootloader.nix
-    ./modules/work.nix
+    ./modules/work/postgres.nix
+    ./modules/work/packages.nix
     # ./modules/laptop_amd.nix
     # ./modules/games.nix
   ];
