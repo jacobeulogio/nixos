@@ -22,7 +22,7 @@
           ./hosts/eulogio/configuration.nix
           ./hosts/eulogio/hardware-configuration.nix
           ./modules/core/packages.nix
-          ./modules/core/services.nix
+          ./modules/core/settings.nix
           ./modules/core/hyprland.nix
           ./modules/games.nix
           ./modules/laptop_amd.nix
@@ -39,7 +39,7 @@
           ./hosts/work/thd/configuration.nix
           ./hosts/work/thd/hardware-configuration.nix
           ./modules/core/packages.nix
-          ./modules/core/services.nix
+          ./modules/core/settings.nix
           ./modules/core/hyprland.nix
           ./modules/work/postgres.nix
           ./modules/work/packages.nix
@@ -53,7 +53,7 @@
           ./hosts/work/thd/configuration.nix
           ./hosts/work/thd/hardware-configuration.nix
           ./modules/core/packages.nix
-          ./modules/core/services.nix
+          ./modules/core/settings.nix
           ./modules/core/hyprland.nix
           ./modules/work/packages.nix
           nix-flatpak.nixosModules.nix-flatpak

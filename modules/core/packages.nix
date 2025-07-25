@@ -3,10 +3,8 @@
   programs.zsh = {
     enable = true;
   };
-  users.defaultUserShell = pkgs.zsh;
 
   programs.nix-ld.enable = true;
-  environment.localBinInPath = true;
 
   programs.neovim = {
     enable = true;
@@ -42,8 +40,6 @@
     qutebrowser python313Packages.adblock vivaldi
   ];
 
-  fonts.fontDir.enable = true;
-  fonts.fontconfig.enable = true;
   fonts.packages = with pkgs; [
     noto-fonts
     noto-fonts-emoji
@@ -51,13 +47,11 @@
     nerd-fonts.geist-mono
   ];
 
-  hardware.keyboard.qmk.enable = true;
   services.udev.packages = with pkgs; [ 
     via
     vial
   ];
   
-  services.flatpak.enable = true; 
   services.flatpak.packages = [
     "io.dbeaver.DBeaverCommunity"
   ];
