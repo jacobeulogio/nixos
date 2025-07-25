@@ -19,8 +19,8 @@
       eulogio = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
+          ./hosts/eulogio/hardware.nix
           ./hosts/eulogio/configuration.nix
-          ./hosts/eulogio/hardware-configuration.nix
           ./modules/core/packages.nix
           ./modules/core/settings.nix
           ./modules/core/hyprland.nix
