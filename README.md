@@ -3,7 +3,7 @@
   This repository contains my personal NixOS configuration, managed using Nix [Flakes](https://nixos.wiki/wiki/Flakes). It's structured to be modular and easily adaptable
   across different machines.
 
-  ###Repository Structure
+  ### Repository Structure
 ---
 
   The configuration is organized into several key directories:
@@ -52,7 +52,7 @@
 
 ```nix
 
-  sudo nixos-rebuild switch --flake .#<hostname>
+sudo nixos-rebuild switch --flake .#<hostname>
 
 ```
 
@@ -62,7 +62,7 @@
 
 ```nix
 
-    sudo nixos-rebuild switch --flake .#eulogio
+sudo nixos-rebuild switch --flake .#eulogio
 
 ```
 
@@ -74,7 +74,7 @@
 
 ```nix
 
-    nix develop .#<shell-name>
+nix develop .#<shell-name>
 
 ```
 
@@ -84,6 +84,6 @@
 
 ```nix
 
-   nix develop .#python
+nix develop .#python
 
 ```
