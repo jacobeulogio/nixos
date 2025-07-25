@@ -1,22 +1,26 @@
-{ config, pkgs, ... }: {
-
-  imports = [
-    ./hardware-configuration.nix
-    ./modules/hyprland.nix
-    ./modules/core.nix
-    ./modules/bootloader.nix
-    ./modules/work/postgres.nix
-    ./modules/work/packages.nix
-    # ./modules/laptop_amd.nix
-    # ./modules/games.nix
-  ];
-
+{
+  config,
+  pkgs,
+  ...
+}: {
   nix.settings.experimental-features = ["nix-command" "flakes"];
+
+  boot.kernelPackages = pkgs.linuxPackages_cachyos;
+  # boot.kernelPackages = pkgs.linuxPackages_latest;
+
+  boot.loader = {
+    grub = {
+      enable = true;
+      device = "nodev";
+      efiSupport = true;
+    };
+    efi.canTouchEfiVariables = true;
+  };
 
   users.users.eulogio = {
     isNormalUser = true;
     description = "Eulogio";
-    extraGroups = [ "networkmanager" "wheel" "audio" "video" "docker" ];
+    extraGroups = ["networkmanager" "wheel" "audio" "video" "docker"];
     packages = with pkgs; [
     ];
   };
@@ -43,10 +47,10 @@
   };
 
   # Services
-  services.xserver = {                                                       
-        enable = true;                                                          
-        xkb.options = "caps:swapescape";
-  };                                                                           
+  services.xserver = {
+    enable = true;
+    xkb.options = "caps:swapescape";
+  };
 
   services.displayManager.gdm = {
     enable = true;
@@ -78,11 +82,10 @@
   #   enableSSHSupport = true;
   # };
 
-
   # Firewall.
-  networking.firewall.allowedTCPPorts = [ 5432 5000 8080 ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
+  # networking.firewall.allowedTCPPorts = [];
+  # networking.firewall.allowedUDPPorts = [];
   # networking.firewall.enable = false;
 
-  system.stateVersion = "25.05"; 
+  system.stateVersion = "25.05";
 }

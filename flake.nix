@@ -7,17 +7,58 @@
     nix-flatpak.url = "github:gmodena/nix-flatpak";
   };
 
-  outputs = { self, nixpkgs, chaotic, nix-flatpak, ... }: {
+  outputs = {
+    self,
+    nixpkgs,
+    chaotic,
+    nix-flatpak,
+    ...
+  }: {
+    nixosConfigurations = {
 
-    nixosConfigurations.eulogio = nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
-      modules = [
-        ./configuration.nix
-        nix-flatpak.nixosModules.nix-flatpak
-        chaotic.nixosModules.nyx-cache
-        chaotic.nixosModules.nyx-overlay
-        chaotic.nixosModules.nyx-registry
-      ];
+      eulogio = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          ./hosts/eulogio/configuration.nix
+          ./hosts/eulogio/hardware-configuration.nix
+          ./modules/core/packages.nix
+          ./modules/core/services.nix
+          ./modules/core/hyprland.nix
+          ./modules/games.nix
+          ./modules/laptop_amd.nix
+          nix-flatpak.nixosModules.nix-flatpak
+          chaotic.nixosModules.nyx-cache
+          chaotic.nixosModules.nyx-overlay
+          chaotic.nixosModules.nyx-registry
+        ];
+      };
+
+      thd = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          ./hosts/work/thd/configuration.nix
+          ./hosts/work/thd/hardware-configuration.nix
+          ./modules/core/packages.nix
+          ./modules/core/services.nix
+          ./modules/core/hyprland.nix
+          ./modules/work/postgres.nix
+          ./modules/work/packages.nix
+          nix-flatpak.nixosModules.nix-flatpak
+        ];
+      };
+
+      bth = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          ./hosts/work/thd/configuration.nix
+          ./hosts/work/thd/hardware-configuration.nix
+          ./modules/core/packages.nix
+          ./modules/core/services.nix
+          ./modules/core/hyprland.nix
+          ./modules/work/packages.nix
+          nix-flatpak.nixosModules.nix-flatpak
+        ];
+      };
     };
   };
 }
