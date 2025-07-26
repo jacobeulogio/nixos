@@ -52,9 +52,12 @@
     vial
   ];
   
-  services.flatpak.packages = [
-    "io.dbeaver.DBeaverCommunity"
-  ];
+  services.flatpak = {
+    enable = true;
+    packages = [
+      "io.dbeaver.DBeaverCommunity"
+    ];
+  };
 
   virtualisation.docker.enable = true;
 }
