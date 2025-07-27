@@ -1,3 +1,5 @@
+<p align="center"><img src="https://i.imgur.com/X5zKxvp.png" width=150px></p>
+
 # My NixOS Configuration
 
   This repository contains my personal NixOS configuration, managed using Nix [Flakes](https://nixos.wiki/wiki/Flakes). It's structured to be modular and easily adaptable
