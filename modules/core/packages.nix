@@ -17,7 +17,7 @@
     vim
     atuin yazi stow 
     wget curl
-    btop tree wl-clipboard
+    tree wl-clipboard
     fzf fd ripgrep zoxide
     p7zip unzip ffmpeg jq poppler resvg imagemagick
 
