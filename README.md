@@ -1,7 +1,5 @@
-<p align="center"><img src="https://i.imgur.com/X5zKxvp.png" width=150px></p>
-
 # My NixOS Configuration
-
+<p align="center"><img src="https://i.imgur.com/X5zKxvp.png" width=150px></p
   This repository contains my personal NixOS configuration, managed using Nix [Flakes](https://nixos.wiki/wiki/Flakes). It's structured to be modular and easily adaptable
   across different machines.
 
@@ -35,18 +33,6 @@
      shells.
 
   How to Use
-
-  Installation on a New Machine
-
-
-   1. Boot the NixOS installer.
-   2. Partition and format the disks.
-   3. Mount the filesystems to /mnt.
-   4. Generate a hardware configuration for the new machine: nixos-generate-config --root /mnt.
-   5. Copy the generated hardware-configuration.nix to a new directory under /hosts/<new-hostname>/.
-   6. Create a configuration.nix for the new host, importing the modules you need.
-   7. Add the new host to the nixosConfigurations output in flake.nix.
-   8. Install NixOS using the flake: nixos-install --flake .#<new-hostname>.
 
   Applying Changes to an Existing Machine
 
