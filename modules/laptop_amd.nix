@@ -1,16 +1,10 @@
-{
-  config,
-  pkgs,
-  chaotic,
-  ...
-}: {
+{ config, pkgs, chaotic, ... }: {
 
   boot.kernelParams = ["quiet" "amd_pstate=active" "amdgpu.ppfeaturemask=0xffffffff"];
 
   powerManagement.enable = true;
 
   services = {
-
     power-profiles-daemon.enable = false;
 
     logind = {

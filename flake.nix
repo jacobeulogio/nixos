@@ -19,8 +19,7 @@
       eulogio = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
-          ./hosts/eulogio/hardware.nix
-          ./hosts/eulogio/configuration.nix
+          ./hosts/eulogio.nix
           ./modules/core/packages.nix
           ./modules/core/settings.nix
           ./modules/core/hyprland.nix
@@ -36,8 +35,7 @@
       thd = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
-          ./hosts/work/thd/configuration.nix
-          ./hosts/work/thd/hardware-configuration.nix
+          ./hosts/thd.nix
           ./modules/core/packages.nix
           ./modules/core/settings.nix
           ./modules/core/hyprland.nix
@@ -50,8 +48,7 @@
       bth = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
-          ./hosts/work/thd/configuration.nix
-          ./hosts/work/thd/hardware-configuration.nix
+          ./hosts/bth.nix
           ./modules/core/packages.nix
           ./modules/core/settings.nix
           ./modules/core/hyprland.nix

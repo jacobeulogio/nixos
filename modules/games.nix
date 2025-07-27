@@ -1,9 +1,5 @@
-{
-  config,
-  pkgs,
-  chaotic,
-  ...
-}: {
+{ config, pkgs, chaotic, ... }: {
+
   programs.steam = {
     enable = true;
     remotePlay.openFirewall = true;
