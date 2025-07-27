@@ -17,11 +17,11 @@
     efi.canTouchEfiVariables = true;
   };
 
+  users.defaultUserShell = pkgs.zsh;
   users.users.eulogio = {
     isNormalUser = true;
     description = "Eulogio";
     extraGroups = [ "networkmanager" "wheel" "audio" "video" "docker" ];
-    defaultUserShell = pkgs.zsh;
   };
 
   time.timeZone = "Asia/Manila";
