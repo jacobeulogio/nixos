@@ -35,4 +35,8 @@
 
   networking.firewall.allowedTCPPorts = [ 5432 ];
 
+  environment.systemPackages = with pkgs; [
+    pgbackrest
+  ];
+
 }
