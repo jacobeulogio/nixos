@@ -6,7 +6,14 @@
     ensureDatabases = [ "analytics" ];
     package = pkgs.postgresql_17;
     enableTCPIP = true;
-    extensions = with pkgs; [ postgresql17Packages.tds_fdw ];
+    extensions = with pkgs; [ 
+      postgresql17Packages.tds_fdw 
+      postgresql17Packages.pg_cron 
+      postgresql17Packages.pgloader 
+      postgresql17Packages.pgcopydb 
+      postgresql17Packages.pg_partman 
+      postgresql17Packages.pgddl 
+    ];
     authentication = pkgs.lib.mkOverride 10 ''
       # type database     DBuser  address            auth-method
       local  all          all                        trust
@@ -25,5 +32,6 @@
       listen_addresses = "*";
     };
   };
+
 
 }
