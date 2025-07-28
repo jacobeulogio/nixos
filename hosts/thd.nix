@@ -5,7 +5,7 @@
     [ (modulesPath + "/installer/scan/not-detected.nix") ];
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
-  networking.firewall.allowedTCPPorts = [ 8080 5000 5432];
+  networking.firewall.allowedTCPPorts = [ 8080 5000 ];
   networking.firewall.allowedUDPPorts = [];
   system.stateVersion = "25.05"; 
 

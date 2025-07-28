@@ -51,6 +51,7 @@
             ./hosts/bth.nix
             ./modules/work/home.nix
             ./modules/work/packages.nix
+            ./modules/work/kafka.nix
           ];
         };
       };
