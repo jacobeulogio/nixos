@@ -40,8 +40,9 @@
           modules = commonModules ++ [
             ./hosts/thd.nix
             ./modules/work/home.nix
-            ./modules/work/postgres.nix
             ./modules/work/packages.nix
+            ./modules/work/postgres.nix
+            ./modules/work/kafka.nix
           ];
         };
 
