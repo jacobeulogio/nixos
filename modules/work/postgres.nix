@@ -9,7 +9,6 @@
     extensions = with pkgs; [ 
       postgresql17Packages.tds_fdw 
       postgresql17Packages.pg_cron 
-      postgresql17Packages.pgcopydb 
       postgresql17Packages.pg_partman 
       postgresql17Packages.pgddl 
     ];
@@ -37,6 +36,7 @@
   environment.systemPackages = with pkgs; [
     pgbackrest
     pgloader 
+    pgcopydb 
   ];
 
 }
