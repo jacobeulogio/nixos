@@ -21,6 +21,10 @@
       ];
     in
     {
+      devShells.x86_64-linux = {
+        default = self.devShells.x86_64-linux.python;
+        python = import ./shells/python.nix { pkgs = nixpkgs.legacyPackages."x86_64-linux"; };
+      };
       nixosConfigurations = {
 
         eulogio = nixpkgs.lib.nixosSystem {
