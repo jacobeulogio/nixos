@@ -8,9 +8,9 @@
     power-profiles-daemon.enable = false;
 
     logind = {
-      lidSwitch = "suspend";
-      lidSwitchExternalPower = "suspend";
-      lidSwitchDocked = "ignore";
+      lidSwitch = "sleep";
+      lidSwitchExternalPower = "sleep";
+      lidSwitchDocked = "sleep";
     };
 
     tlp = {
