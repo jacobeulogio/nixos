@@ -20,6 +20,7 @@
     tree wl-clipboard
     fzf fd ripgrep zoxide
     p7zip unzip ffmpeg jq poppler resvg imagemagick
+    openssl
 
     # Dev
     python3 uv ruff python313Packages.pip
