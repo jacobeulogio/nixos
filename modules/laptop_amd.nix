@@ -44,5 +44,6 @@
     supergfxctl
     asusctl
     linuxKernel.packages.linux_zen.cpupower
+    spotify
   ];
 }
