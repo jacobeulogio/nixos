@@ -39,6 +39,8 @@
 
     # Browsers
     qutebrowser python313Packages.adblock vivaldi
+
+    vial
   ];
 
   fonts.packages = with pkgs; [
