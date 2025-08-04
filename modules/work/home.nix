@@ -7,10 +7,10 @@
       docker
     ];
 
-    home.sessionVariables = {
-      GOOGLE_CLOUD_PROJECT = "dashboard-441809";
-    };
-
+    # home.sessionVariables = {
+    #   GOOGLE_CLOUD_PROJECT = "dashboard-441809";
+    # };
+    
     programs.git = {
       userName = lib.mkForce "jacobbenitez";
       userEmail = lib.mkForce "jacob.benitez@triumphhomedepot.com";

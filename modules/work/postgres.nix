@@ -31,7 +31,17 @@
     };
   };
 
+  # Allow port 5432
   networking.firewall.allowedTCPPorts = [ 5432 ];
+
+  # pgbackrest 
+  services.pgbackrest = {
+    enable = true;
+  #   repos = ;    
+  #   settings = ; 
+  #   stanzas = ; 
+  };
+
 
   environment.systemPackages = with pkgs; [
     pgbackrest

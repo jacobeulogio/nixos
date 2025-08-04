@@ -58,6 +58,7 @@
             ./modules/work/home.nix
             ./modules/work/packages.nix
             ./modules/work/kafka.nix
+            ./modules/work/postgres.nix
           ];
         };
       };
