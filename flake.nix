@@ -37,6 +37,7 @@
             chaotic.nixosModules.nyx-cache
             chaotic.nixosModules.nyx-overlay
             chaotic.nixosModules.nyx-registry
+            ./modules/work/postgres.nix
           ];
         };
 

@@ -1,4 +1,4 @@
-{ config, pkgs, ... }: {
+{ config, pkgs, lib,  ... }: {
 
   # Postgres
   services.postgresql = {
@@ -26,11 +26,21 @@
       host   all          all     172.18.0.0/16      scram-sha-256
       host   all          all     172.19.0.0/16      scram-sha-256
     '';
+
     settings = {
-      listen_addresses = "*";
-      archive_mode = "on";
-      archive_command = "pgbackrest --stanza=main archive-push %p";
+      listen_addresses = lib.mkForce "*";
+      archive_mode = lib.mkDefault "on";
+      archive_command = lib.mkDefault "${lib.getExe pkgs.pgbackrest} --stanza=main archive-push %p";
+      max_wal_senders = 3;
+      wal_level = "replica";
     };
+
+    identMap = ''
+      postgres pgbackrest postgres
+    '';
+
+    initdbArgs = [ "--allow-group-access" ];
+
   };
 
   # Allow port 5432
@@ -39,11 +49,31 @@
   # pgbackrest 
   services.pgbackrest = {
     enable = true;
-  #   repos = ;    
-  #   settings = ; 
-  #   stanzas = ; 
+
+    repos = {
+      localhost.path = "/var/lib/pgbackrest";
+    };
+
+    settings = {                           
+      # archive-push = {
+      #   compress-level = "3";
+      # };
+    };
+
+    stanzas = {
+      main = {
+        settings.cmd = lib.getExe pkgs.pgbackrest;
+        instances.localhost = {
+          path = config.services.postgresql.dataDir;
+          user = "postgres";
+        };
+
+      };
+    };                                            
   };
 
+  users.users.pgbackrest.extraGroups = [ "postgres" ];
+  users.groups.pgbackrest.members = [ "postgres" ];
 
   environment.systemPackages = with pkgs; [
     pgbackrest
