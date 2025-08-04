@@ -26,24 +26,12 @@
       host   all          all     172.18.0.0/16      scram-sha-256
       host   all          all     172.19.0.0/16      scram-sha-256
     '';
-    settings = {
+    settings = { 
       listen_addresses = "*";
-      archive_mode = "on";
-      archive_command = "pgbackrest --stanza=main archive-push %p";
     };
   };
 
-  # Allow port 5432
   networking.firewall.allowedTCPPorts = [ 5432 ];
-
-  # pgbackrest 
-  services.pgbackrest = {
-    enable = true;
-  #   repos = ;    
-  #   settings = ; 
-  #   stanzas = ; 
-  };
-
 
   environment.systemPackages = with pkgs; [
     pgbackrest

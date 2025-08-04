@@ -46,7 +46,7 @@
             ./hosts/thd.nix
             ./modules/work/home.nix
             ./modules/work/packages.nix
-            ./modules/work/postgres.nix
+            ./modules/work/postgres/thd.nix
             ./modules/work/kafka.nix
           ];
         };
@@ -58,7 +58,7 @@
             ./modules/work/home.nix
             ./modules/work/packages.nix
             ./modules/work/kafka.nix
-            ./modules/work/postgres.nix
+            ./modules/work/postgres/bth.nix
           ];
         };
       };

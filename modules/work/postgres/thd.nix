@@ -1,16 +1,20 @@
-{ config, pkgs, ... }: {
-
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}: {
   # Postgres
   services.postgresql = {
     enable = true;
-    ensureDatabases = [ "analytics" ];
+    ensureDatabases = ["analytics"];
     package = pkgs.postgresql_17;
     enableTCPIP = true;
-    extensions = with pkgs; [ 
-      postgresql17Packages.tds_fdw 
-      postgresql17Packages.pg_cron 
-      postgresql17Packages.pg_partman 
-      postgresql17Packages.pgddl 
+    extensions = with pkgs; [
+      postgresql17Packages.tds_fdw
+      postgresql17Packages.pg_cron
+      postgresql17Packages.pg_partman
+      postgresql17Packages.pgddl
     ];
     authentication = pkgs.lib.mkOverride 10 ''
       # type database     DBuser  address            auth-method
@@ -27,28 +31,43 @@
       host   all          all     172.19.0.0/16      scram-sha-256
     '';
     settings = {
-      listen_addresses = "*";
+      listen_addresses = lib.mkForce "*";
       archive_mode = "on";
-      archive_command = "pgbackrest --stanza=main archive-push %p";
+      archive_command = "${pkgs.pgbackrest}/bin/pgbackrest --stanza=main archive-push %p";
+      max_wal_senders = 3;
+      wal_level = "replica";
     };
   };
 
-  # Allow port 5432
-  networking.firewall.allowedTCPPorts = [ 5432 ];
-
-  # pgbackrest 
+  # pgbackrest
   services.pgbackrest = {
     enable = true;
-  #   repos = ;    
-  #   settings = ; 
-  #   stanzas = ; 
+
+    repos = {
+      localhost.path = "var/lib/pgbackrest";
+    };
+
+    settings = {                           
+      archive-push = {
+        compress-level = 3;
+      };
+      repo1-path = "/var/lib/pgbackrest";
+      repo1-retention-full = 2;
+    };
+
+    stanzas = {
+      main = {
+        pg1-path = "/var/lib/postgresql/17";
+      };
+    };                                            
+
   };
 
+  networking.firewall.allowedTCPPorts = [5432];
 
   environment.systemPackages = with pkgs; [
     pgbackrest
-    pgloader 
-    pgcopydb 
+    pgloader
+    pgcopydb
   ];
-
 }
