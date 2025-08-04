@@ -23,13 +23,14 @@
     openssl
 
     # Dev
-    python3 uv ruff python313Packages.pip
-    cargo rust-analyzer rustup
+    python3 uv ruff python313Packages.pip python313Packages.python-lsp-server
+    cargo rust-analyzer rustup rustc
     gcc cmake
     lua-language-server stylua
     nodejs
     gemini-cli
     go gopls
+    nil
     
     # Terminal and Tmux
     wezterm tmux 
