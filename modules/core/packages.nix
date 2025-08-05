@@ -65,6 +65,7 @@
     stylua
     gopls
     nil
+    beautysh
 
     # Terminal and Tmux
     wezterm
