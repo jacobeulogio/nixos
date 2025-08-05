@@ -37,7 +37,7 @@
     settings = {
       listen_addresses = lib.mkForce "*";
       archive_mode = lib.mkDefault "on";
-      archive_command = lib.mkDefault "${lib.getExe pkgs.pgbackrest} --stanza=main archive-push %p";
+      archive_command = lib.mkForce "${lib.getExe pkgs.pgbackrest} --stanza=main archive-push %p";
       max_wal_senders = "3";
 
       wal_level = "replica";

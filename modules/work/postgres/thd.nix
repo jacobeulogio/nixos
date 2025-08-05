@@ -33,7 +33,7 @@
     settings = {
       listen_addresses = lib.mkForce "*";
       archive_mode = "on";
-      archive_command = "${pkgs.pgbackrest}/bin/pgbackrest --stanza=main archive-push %p";
+      archive_command = lib.mkDefault "${pkgs.pgbackrest}/bin/pgbackrest --stanza=main archive-push %p";
       max_wal_senders = 3;
       wal_level = "replica";
     };
@@ -51,12 +51,12 @@
       archive-push = {
         compress-level = 3;
       };
-      # repo1-path = "/var/lib/pgbackrest";
+      repo1-path = "/var/lib/pgbackrest";
       repo1-retention-full = 2;
     };
 
     stanzas = {
-      # main = "/var/lib/postgresql/17";
+      main = "/var/lib/postgresql/17";
     };                                            
 
   };
