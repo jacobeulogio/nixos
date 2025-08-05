@@ -56,9 +56,7 @@
     };
 
     stanzas = {
-      main = {
-        pg1-path = "/var/lib/postgresql/17";
-      };
+      main = "/var/lib/postgresql/17";
     };                                            
 
   };

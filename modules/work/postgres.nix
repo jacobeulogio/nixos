@@ -1,4 +1,10 @@
-{ config, pkgs, lib,  ... }: {
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
+{
 
   # Postgres
   services.postgresql = {
@@ -6,12 +12,13 @@
     ensureDatabases = [ "analytics" ];
     package = pkgs.postgresql_17;
     enableTCPIP = true;
-    extensions = with pkgs; [ 
-      postgresql17Packages.tds_fdw 
-      postgresql17Packages.pg_cron 
-      postgresql17Packages.pg_partman 
-      postgresql17Packages.pgddl 
+    extensions = with pkgs; [
+      postgresql17Packages.tds_fdw
+      postgresql17Packages.pg_cron
+      postgresql17Packages.pg_partman
+      postgresql17Packages.pgddl
     ];
+
     authentication = pkgs.lib.mkOverride 10 ''
       # type database     DBuser  address            auth-method
       local  all          all                        trust
@@ -31,13 +38,14 @@
       listen_addresses = lib.mkForce "*";
       archive_mode = lib.mkDefault "on";
       archive_command = lib.mkDefault "${lib.getExe pkgs.pgbackrest} --stanza=main archive-push %p";
-      max_wal_senders = 3;
-      wal_level = "replica";
-    };
+      max_wal_senders = "3";
 
-    identMap = ''
-      postgres pgbackrest postgres
-    '';
+      wal_level = "replica";
+      max_wal_size = "1GB";
+      min_wal_size = "80MB";
+
+      logging_collector = "true";
+    };
 
     initdbArgs = [ "--allow-group-access" ];
 
@@ -46,7 +54,7 @@
   # Allow port 5432
   networking.firewall.allowedTCPPorts = [ 5432 ];
 
-  # pgbackrest 
+  # pgbackrest
   services.pgbackrest = {
     enable = true;
 
@@ -54,31 +62,36 @@
       localhost.path = "/var/lib/pgbackrest";
     };
 
-    settings = {                           
-      # archive-push = {
-      #   compress-level = "3";
-      # };
+    settings = {
+      repo1-path = "/var/lib/pgbackrest";
+      repo1-retention-full = "2";
     };
 
-    stanzas = {
-      main = {
-        settings.cmd = lib.getExe pkgs.pgbackrest;
-        instances.localhost = {
-          path = config.services.postgresql.dataDir;
-          user = "postgres";
-        };
-
+    stanzas.main = {
+      settings.cmd = lib.getExe pkgs.pgbackrest;
+      instances.localhost = {
+        path = config.services.postgresql.dataDir;
+        user = "postgres";
       };
-    };                                            
+    };
   };
 
   users.users.pgbackrest.extraGroups = [ "postgres" ];
   users.groups.pgbackrest.members = [ "postgres" ];
 
+  systemd.tmpfiles.rules = [
+    "d /var/log/pgbackrest 0700 postgres postgres -"
+    "d /var/spool/pgbackrest 0700 postgres postgres -"
+    "d /var/lib/pgbackrest 0700 postgres postgres -"
+    "f /var/lib/pgbackrest/backup 0700 postgres postgres -"
+    "d /var/lib/postgresql/17/global 0700 postgres postgres -"
+    "f /tmp/pgbackrest/all.stop 0700 postgres postgres -"
+  ];
+
   environment.systemPackages = with pkgs; [
     pgbackrest
-    pgloader 
-    pgcopydb 
+    pgloader
+    pgcopydb
   ];
 
 }
