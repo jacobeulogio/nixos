@@ -2,14 +2,36 @@
   description = "My config";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    home-manager.url = "github:nix-community/home-manager";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs";
-    chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
-    nix-flatpak.url = "github:gmodena/nix-flatpak";
+    nixpkgs = {
+      url = "github:nixos/nixpkgs/nixos-unstable";
+    };
+
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    chaotic = {
+      url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
+    };
+
+    neovim-nightly-overlay = {
+      url = "github:nix-community/neovim-nightly-overlay";
+    };
+
+    nix-flatpak = {
+      url = "github:gmodena/nix-flatpak";
+    };
   };
 
-  outputs = { self, nixpkgs, chaotic, nix-flatpak, home-manager, ... }:
+  outputs =
+    {
+      nixpkgs,
+      chaotic,
+      nix-flatpak,
+      home-manager,
+      ...
+    }:
     let
       commonModules = [
         ./modules/core/packages.nix
@@ -21,11 +43,6 @@
       ];
     in
     {
-      devShells.x86_64-linux = {
-        default = self.devShells.x86_64-linux.python;
-        python = import ./shells/python.nix { pkgs = nixpkgs.legacyPackages."x86_64-linux"; };
-        rust = import ./shells/rust.nix { pkgs = nixpkgs.legacyPackages."x86_64-linux"; };
-      };
       nixosConfigurations = {
 
         eulogio = nixpkgs.lib.nixosSystem {
@@ -48,7 +65,7 @@
             ./modules/work/home.nix
             ./modules/work/packages.nix
             ./modules/work/postgres/thd.nix
-            ./modules/work/kafka.nix
+            # ./modules/work/kafka.nix
           ];
         };
 
@@ -58,7 +75,7 @@
             ./hosts/bth.nix
             ./modules/work/home.nix
             ./modules/work/packages.nix
-            ./modules/work/kafka.nix
+            # ./modules/work/kafka.nix
             ./modules/work/postgres/bth.nix
           ];
         };
