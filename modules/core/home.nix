@@ -16,9 +16,12 @@
 
       direnv = {
         enable = true;
-        enableZshIntegration = true; 
+        # enableBashIntegration = true;
+        enableZshIntegration = true;
         nix-direnv.enable = true;
       };
+
+      # zsh.enable = true;
     };
 
     home.stateVersion = "25.05";
