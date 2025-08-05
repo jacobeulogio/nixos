@@ -51,12 +51,12 @@
       archive-push = {
         compress-level = 3;
       };
-      repo1-path = "/var/lib/pgbackrest";
+      # repo1-path = "/var/lib/pgbackrest";
       repo1-retention-full = 2;
     };
 
     stanzas = {
-      main = "/var/lib/postgresql/17";
+      # main = "/var/lib/postgresql/17";
     };                                            
 
   };

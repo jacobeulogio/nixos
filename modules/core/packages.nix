@@ -15,7 +15,7 @@
     (import (
       builtins.fetchTarball {
         url = "https://github.com/nix-community/neovim-nightly-overlay/archive/master.tar.gz";
-        sha256 = "0vmvqia5fnqpbrqnvbzwwkqwvvw45fmfcdr274fj688zzxrbwp4g";
+        sha256 = "0w720b28bvl6pj8ki8f8lhp9bv074hnl7f3a20c2b1qwril0n13i";
       }
     ))
   ];
