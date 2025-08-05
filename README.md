@@ -8,29 +8,24 @@
 
   The configuration is organized into several key directories:
 
+   - `flake.nix`: The entry point for the entire configuration. It defines the outputs of the flake, such as the NixOS configurations for each host. 
 
    - `/hosts`: Contains machine-specific configurations. Each subdirectory corresponds to a unique host and defines its hardware, filesystems, and which modules to import.
-       - eulogio/: Configuration for my personal machine.
-       - work/: Configurations for work-related machines (bth and thd).
+       - eulogio: Configuration for my personal machine.
+       - thd & bth: Configurations for work-related machines.
 
 
-   - `/modules`: Contains reusable sets of configurations (modules) that can be imported by any host. This is where the bulk of the system's logic resides.
+   - `/modules`: Contains reusable sets of configurations (modules) that can be imported by any host such as CLI tools, LSP and applications such as nvim and yazi. 
        - core/: The base modules shared by all hosts.
-           - hyprland.nix: Configures the Hyprland window manager and related tools.
-           - packages.nix: Defines the core set of packages to be installed everywhere.
+           - packages.nix: Defines the core set of commmon packages to be installed mostly everywhere.
+           - hyprland.nix: Configures the Hyprland window manager and related packages.
            - settings.nix: Includes common system settings like users, timezone, and locale.
        - work/: Modules specific to my work environment.
            - packages.nix: Installs additional packages needed for work.
-           - postgres.nix: Configures a PostgreSQL database.
+           - postgres.nix: Configures a PostgreSQL database. Opens firewlall for connectivity and authentication config. 
        - games.nix: A module for gaming-related packages and settings.
-       - laptop_amd.nix: Contains hardware-specific tweaks for an AMD laptop.
+       - laptop_amd.nix: Contains AMD specific power-management tweaks for my laptop.
 
-   - `/shells`: Provides development environments.
-       - python.nix: A development shell with common Python tools.
-
-
-   - `flake.nix`: The entry point for the entire configuration. It defines the outputs of the flake, such as the NixOS configurations for each host and the development
-     shells.
 
   How to Use
 
@@ -54,24 +49,3 @@ sudo nixos-rebuild switch --flake .#eulogio
 
 ```
 
-
-  Using Development Shells
-
-  To enter a development shell defined in the /shells directory, run:
-
-
-```nix
-
-nix develop .#<shell-name>
-
-```
-
-
-  For example, to use the Python shell:
-
-
-```nix
-
-nix develop .#python
-
-```
