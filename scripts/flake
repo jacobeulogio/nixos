@@ -1,0 +1,50 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+command=${1:-}
+language=${2:-}
+PWD=$(pwd)
+
+if [ -z "$command" ]; then
+   echo "Error: No command specified. Use 'init' or 'template'." >&2
+   exit 1
+fi
+
+if [ -z "$language" ]; then
+   read -p "Please select a language: " language
+   if [ -z "$language" ]; then
+       echo "Error: No language provided." >&2
+       exit 1
+   fi
+fi
+
+case "$command" in
+    init)
+        echo "Initializing dev flake for $language"
+
+        template_path="$HOME/nixos/templates/$language.nix"
+        destination_path="$PWD/flake.nix"
+
+        if [ ! -f "$template_path" ]; then
+            echo "Error: Template file not found at $template_path" >&2
+            exit 1
+        fi
+
+        cp "$template_path" "$destination_path" && \
+        nix flake lock && \
+        echo "use flake" > .envrc
+
+        echo "Flake successfully initialized at $destination_path"
+        ;;
+        
+    template) 
+        echo initializing dev flake template for $language
+        nix flake init --template "https://flakehub.com/f/the-nix-way/dev-templates/*#$language"
+        echo "flake successfully initialized at $PWD/flake.nix"
+        ;;
+    *) 
+        echo "Error: Invalid command '$command'" >&2
+        exit 1
+        ;;
+esac
