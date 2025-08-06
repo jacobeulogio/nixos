@@ -7,9 +7,9 @@
       docker
     ];
 
-    # home.sessionVariables = {
+    home.sessionVariables = {
     #   GOOGLE_CLOUD_PROJECT = "dashboard-441809";
-    # };
+    };
     
     programs.git = {
       userName = lib.mkForce "jacobbenitez";

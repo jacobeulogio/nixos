@@ -2,8 +2,20 @@
   config,
   pkgs,
   ...
-}: {
-  nix.settings.experimental-features = ["nix-command" "flakes"];
+}:
+{
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
+
+  environment.variables = {
+    PKG_CONFIG_PATH = "${pkgs.openssl.dev}/lib/pkgconfig";
+    OPENSSL_DIR="${pkgs.openssl.dev}";
+    OPENSSL_NO_VENDOR=1;
+    OPENSSL_LIB_DIR="${pkgs.lib.getLib pkgs.openssl}/lib";
+  };
+
   nixpkgs.config.allowUnfree = true;
 
   environment.localBinInPath = true;
@@ -21,7 +33,13 @@
   users.users.eulogio = {
     isNormalUser = true;
     description = "Eulogio";
-    extraGroups = [ "networkmanager" "wheel" "audio" "video" "docker" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "audio"
+      "video"
+      "docker"
+    ];
   };
 
   time.timeZone = "Asia/Manila";
@@ -59,10 +77,10 @@
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
-  services.xserver = {                                                       
-        enable = true;                                                          
-        xkb.options = "caps:swapescape";
-  };                                                                           
+  services.xserver = {
+    enable = true;
+    xkb.options = "caps:swapescape";
+  };
 
   services.displayManager.gdm = {
     enable = true;
