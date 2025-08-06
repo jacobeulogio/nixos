@@ -1,4 +1,8 @@
-{ config, pkgs, ... }:
+{
+  config,
+  pkgs,
+  ...
+}:
 {
   programs.zsh = {
     enable = true;
@@ -15,7 +19,7 @@
     (import (
       builtins.fetchTarball {
         url = "https://github.com/nix-community/neovim-nightly-overlay/archive/master.tar.gz";
-        sha256 = "0w720b28bvl6pj8ki8f8lhp9bv074hnl7f3a20c2b1qwril0n13i";
+        sha256 = "1qhbin6dzdbq5kgbi2r80365g2nvnmyws9fgkski5b1gpi805f1s";
       }
     ))
   ];
