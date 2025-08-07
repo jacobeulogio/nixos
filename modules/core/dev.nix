@@ -25,6 +25,8 @@
     nil
     beautysh
     nodePackages_latest.prettier
+    tree-sitter                 
+    # nodePackages.tree-sitter-cli
   ]
 ;
 }

@@ -1,6 +1,6 @@
 {
-  config,
   pkgs,
+  inputs,
   ...
 }:
 {
@@ -10,6 +10,7 @@
 
   programs.nix-ld.enable = true;
 
+  nixpkgs.overlays = [ inputs.neovim-nightly-overlay.overlays.default ];
   programs.neovim = {
     enable = true;
     defaultEditor = true;
