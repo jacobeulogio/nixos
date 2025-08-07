@@ -27,7 +27,7 @@
   };
 
   outputs =
-    {
+    inputs@{
       nixpkgs,
       chaotic,
       nix-flatpak,
@@ -44,9 +44,7 @@
         ./modules/core/home.nix
         nix-flatpak.nixosModules.nix-flatpak
         home-manager.nixosModules.home-manager
-        {
-          nixpkgs.overlays = [ neovim-nightly-overlay.overlays.default ];
-        }
+        { _module.args = { inherit inputs; }; }
       ];
     in
     {
@@ -61,7 +59,6 @@
             chaotic.nixosModules.nyx-cache
             chaotic.nixosModules.nyx-overlay
             chaotic.nixosModules.nyx-registry
-            ./modules/work/postgres.nix
           ];
         };
 
@@ -71,7 +68,7 @@
             ./hosts/thd.nix
             ./modules/work/home.nix
             ./modules/work/packages.nix
-            ./modules/work/postgres/thd.nix
+            ./modules/work/postgres.nix
             # ./modules/work/kafka.nix
           ];
         };
@@ -82,8 +79,8 @@
             ./hosts/bth.nix
             ./modules/work/home.nix
             ./modules/work/packages.nix
-            # ./modules/work/kafka.nix
             ./modules/work/postgres/bth.nix
+            # ./modules/work/kafka.nix
           ];
         };
       };
