@@ -44,31 +44,6 @@
     zsh-powerlevel10k
     oh-my-zsh
 
-    # Dev
-    python3
-    uv
-    python313Packages.pip
-    cargo
-    rustup
-    rustc
-    gcc
-    cmake
-    nodejs
-    go
-    gemini-cli
-    opencode
-    bun
-
-    # LSP
-    ruff
-    python313Packages.python-lsp-server
-    rust-analyzer
-    lua-language-server
-    stylua
-    gopls
-    nil
-    beautysh
-
     # Gui
     qutebrowser
     python313Packages.adblock

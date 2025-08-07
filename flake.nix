@@ -38,6 +38,7 @@
     let
       commonModules = [
         ./modules/core/packages.nix
+        ./modules/core/dev.nix
         ./modules/core/settings.nix
         ./modules/core/hyprland.nix
         ./modules/core/home.nix
