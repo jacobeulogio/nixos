@@ -15,16 +15,8 @@
     defaultEditor = true;
   };
 
-  nixpkgs.overlays = [
-    (import (
-      builtins.fetchTarball {
-        url = "https://github.com/nix-community/neovim-nightly-overlay/archive/master.tar.gz";
-        sha256 = "1qhbin6dzdbq5kgbi2r80365g2nvnmyws9fgkski5b1gpi805f1s";
-      }
-    ))
-  ];
-
   environment.systemPackages = with pkgs; [
+    # Cli
     git
     gh
     vim
@@ -47,6 +39,10 @@
     resvg
     imagemagick
     openssl
+    wezterm
+    tmux
+    zsh-powerlevel10k
+    oh-my-zsh
 
     # Dev
     python3
@@ -58,8 +54,10 @@
     gcc
     cmake
     nodejs
-    gemini-cli
     go
+    gemini-cli
+    opencode
+    bun
 
     # LSP
     ruff
@@ -71,19 +69,10 @@
     nil
     beautysh
 
-    # Terminal and Tmux
-    wezterm
-    tmux
-
-    # Zsh
-    zsh-powerlevel10k
-    oh-my-zsh
-
-    # Browsers
+    # Gui
     qutebrowser
     python313Packages.adblock
     vivaldi
-
     vial
   ];
 

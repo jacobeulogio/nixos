@@ -17,6 +17,7 @@
 
     neovim-nightly-overlay = {
       url = "github:nix-community/neovim-nightly-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     nix-flatpak = {
@@ -31,6 +32,7 @@
       chaotic,
       nix-flatpak,
       home-manager,
+      neovim-nightly-overlay,
       ...
     }:
     let
@@ -41,6 +43,9 @@
         ./modules/core/home.nix
         nix-flatpak.nixosModules.nix-flatpak
         home-manager.nixosModules.home-manager
+        {
+          nixpkgs.overlays = [ neovim-nightly-overlay.overlays.default ];
+        }
       ];
     in
     {
