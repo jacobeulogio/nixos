@@ -11,8 +11,6 @@
     cmake
     nodejs
     go
-    gemini-cli
-    opencode
     bun
 
     # Lsp
@@ -25,8 +23,6 @@
     nil
     beautysh
     nodePackages_latest.prettier
-    tree-sitter                 
-    # nodePackages.tree-sitter-cli
   ]
 ;
 }

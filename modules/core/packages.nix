@@ -44,6 +44,8 @@
     tmux
     zsh-powerlevel10k
     oh-my-zsh
+    gemini-cli
+    opencode
 
     # Gui
     qutebrowser
