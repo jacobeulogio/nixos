@@ -36,10 +36,6 @@
     supergfxd.enable = true;
   };
 
-  # services.udev.extraRules = ''
-  #     ACTION=="change", SUBSYSTEM=="drm", ENV{ID_PATH}=="pci-0000:78:00.0", RUN+="${pkgs.writeShellScriptBin "launch_waybar" (builtins.readFile ../scripts/launch_waybar.sh)}"
-  # '';
-
   environment.systemPackages = with pkgs; [
     supergfxctl
     asusctl

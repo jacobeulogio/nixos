@@ -54,8 +54,8 @@
           system = "x86_64-linux";
           modules = commonModules ++ [
             ./hosts/eulogio.nix
-            ./modules/games.nix
-            ./modules/laptop_amd.nix
+            ./modules/personal/games.nix
+            ./modules/personal/laptop_amd.nix
             chaotic.nixosModules.nyx-cache
             chaotic.nixosModules.nyx-overlay
             chaotic.nixosModules.nyx-registry
