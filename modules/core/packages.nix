@@ -8,7 +8,7 @@
     enable = true;
   };
 
-  programs.nix-ld.enable = true;
+  # programs.nix-ld.enable = true;
 
   nixpkgs.overlays = [ inputs.neovim-nightly-overlay.overlays.default ];
   programs.neovim = {
@@ -18,6 +18,7 @@
 
   environment.systemPackages = with pkgs; [
     # Cli
+    bash
     git
     gh
     vim
@@ -44,8 +45,9 @@
     tmux
     zsh-powerlevel10k
     oh-my-zsh
-    gemini-cli
+    # gemini-cli
     opencode
+    claude-code
 
     # Gui
     qutebrowser
