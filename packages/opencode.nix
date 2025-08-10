@@ -8,10 +8,8 @@
   nix-update-script,
   testers,
   writableTmpDirAsHomeHook,
-  # ADDED: Required dependencies for fixing libstdc++.so.6 missing library error
-  stdenv,           # For C++ standard library access
-  autoPatchelfHook, # Automatically patches ELF binaries for correct library linking
-  makeWrapper,      # Creates wrapper scripts with environment variables
+  stdenv,
+  makeWrapper,
 }:
 
 let
@@ -114,7 +112,6 @@ stdenvNoCC.mkDerivation (finalAttrs: {
   nativeBuildInputs = [
     bun
     models-dev
-    autoPatchelfHook
     makeWrapper
   ];
 
@@ -124,9 +121,8 @@ stdenvNoCC.mkDerivation (finalAttrs: {
   ];
 
   patches = [
-    # MODIFIED: Patch `packages/opencode/src/provider/models-macro.ts` to get contents of
+    # Patch `packages/opencode/src/provider/models-macro.ts` to get contents of
     # `_api.json` from the file bundled with `bun build`.
-    # This prevents network requests during sandboxed Nix builds
     ./local-models-dev.patch
   ];
 
