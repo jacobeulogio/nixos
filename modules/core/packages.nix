@@ -46,7 +46,8 @@
     zsh-powerlevel10k
     oh-my-zsh
     # gemini-cli
-    opencode
+    # opencode
+    (pkgs.callPackage ../../packages/opencode.nix { })
     claude-code
 
     # Gui
