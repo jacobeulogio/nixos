@@ -115,11 +115,6 @@ stdenvNoCC.mkDerivation (finalAttrs: {
     makeWrapper
   ];
 
-  # Add runtime library dependencies
-  buildInputs = [
-    stdenv.cc.cc.lib
-  ];
-
   patches = [
     # Patch `packages/opencode/src/provider/models-macro.ts` to get contents of
     # `_api.json` from the file bundled with `bun build`.
@@ -160,7 +155,6 @@ stdenvNoCC.mkDerivation (finalAttrs: {
     runHook postInstall
   '';
 
-  # Wrap the binary with proper library paths to fix libstdc++.so.6 error
   postFixup = ''
     wrapProgram $out/bin/opencode \
       --set LD_LIBRARY_PATH "${lib.makeLibraryPath [ stdenv.cc.cc.lib ]}"
