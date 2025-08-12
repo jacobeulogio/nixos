@@ -2,6 +2,14 @@
 
   boot.kernelParams = ["quiet" "amd_pstate=active" "amdgpu.ppfeaturemask=0xffffffff"];
 
+  boot.kernelModules = [
+    "v4l2loopback" 
+  ];
+ 
+  boot.extraModulePackages = [
+    pkgs.linuxKernel.packages.linux_6_16.v4l2loopback
+  ];
+
   powerManagement.enable = true;
 
   services = {
@@ -41,5 +49,18 @@
     asusctl
     linuxKernel.packages.linux_zen.cpupower
     spotify
+    v4l-utils
+    android-tools
+    adb-sync
   ];
+
+  programs.obs-studio = {
+    enable = true;
+    enableVirtualCamera = true;
+    plugins = with pkgs.obs-studio-plugins; [
+      droidcam-obs
+    ];
+  };
+
+
 }

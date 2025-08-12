@@ -56,6 +56,7 @@
             ./hosts/eulogio.nix
             ./modules/personal/games.nix
             ./modules/personal/laptop_amd.nix
+            ./modules/personal/home.nix
             chaotic.nixosModules.nyx-cache
             chaotic.nixosModules.nyx-overlay
             chaotic.nixosModules.nyx-registry
