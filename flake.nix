@@ -84,7 +84,7 @@
             ./modules/users/eulogio.nix
             ./modules/work/home.nix
             ./modules/work/packages.nix
-            ./modules/work/postgres/bth.nix
+            # ./modules/work/postgres/bth.nix
             # ./modules/work/kafka.nix
           ];
         };
