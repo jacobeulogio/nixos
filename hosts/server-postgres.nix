@@ -27,7 +27,6 @@
   boot.loader.grub.device = lib.mkForce "/dev/sda";
   boot.loader.grub.useOSProber = lib.mkForce true;
 
-  networking.hostName = "nixos";
   networking.networkmanager.enable = true;
   networking = {
     useDHCP = false;
