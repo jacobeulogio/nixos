@@ -1,4 +1,4 @@
-{ config, pkgs, lib }: { 
+{ config, pkgs, lib, ... }: { 
 
   users.users.eulogio = {
     isNormalUser = true;
