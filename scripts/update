@@ -1,9 +1,15 @@
 #!/usr/bin/env bash 
 
-set -euo pipefail 
+# set -euo pipefail 
 
-HOST_FILE="${XDG_RUNTIME_DIR:-$HOME}/nix_host"
+HOST_FILE="$HOME/.nix_host"
 host=${1:-$(cat "$HOST_FILE" 2>/dev/null)}
+
+if [[ ! -z "$1" ]]; then
+  host=$1
+  echo "Setting $1 as host"
+  echo "$host" > "$HOST_FILE"
+fi
 
 if [[ -z "$host" ]]; then
   read 'Set default host: ' host || return 1
@@ -14,6 +20,6 @@ cd ~/nixos
 echo "Updating host: $host"
 sudo nix flake update
 sudo nixos-rebuild switch --flake ".#$host" --upgrade --no-reexec && \
-echo "Update successful." || echo "Update failed."
+notify-send "Update successful." || notify-send "Update failed."
 
 

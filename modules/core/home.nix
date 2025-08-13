@@ -1,4 +1,5 @@
-{
+{ pkgs, lib, ... }: {
+
   home-manager.users.eulogio = {
 
     imports = [ ];
@@ -23,6 +24,10 @@
 
       # zsh.enable = true;
     };
+
+    home.sessionPath = [
+      "$HOME/nixos/scripts"
+    ];
 
     home.stateVersion = "25.05";
 

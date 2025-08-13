@@ -17,8 +17,6 @@
   };
 
   environment.systemPackages = with pkgs; [
-    # Cli
-    bash
     git
     gh
     vim
@@ -44,17 +42,11 @@
     wezterm
     tmux
     zsh-powerlevel10k
-    oh-my-zsh
     # gemini-cli
     # opencode
     (pkgs.callPackage ../../packages/opencode.nix { })
     claude-code
 
-    # Gui
-    qutebrowser
-    python313Packages.adblock
-    vivaldi
-    vial
   ];
 
   fonts.packages = with pkgs; [

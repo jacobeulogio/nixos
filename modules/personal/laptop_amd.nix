@@ -1,4 +1,6 @@
-{ config, pkgs, chaotic, ... }: {
+{ config, pkgs, chaotic, lib, ... }: {
+
+  boot.kernelPackages = lib.mkForce pkgs.linuxPackages_latest;
 
   boot.kernelParams = ["quiet" "amd_pstate=active" "amdgpu.ppfeaturemask=0xffffffff"];
 

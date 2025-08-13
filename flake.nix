@@ -27,14 +27,14 @@
   };
 
   outputs =
-    inputs@{
+    {
       nixpkgs,
       chaotic,
       nix-flatpak,
       home-manager,
       neovim-nightly-overlay,
       ...
-    }:
+    }@inputs:
     let
       commonModules = [
         ./modules/core/packages.nix
@@ -42,6 +42,7 @@
         ./modules/core/settings.nix
         ./modules/core/hyprland.nix
         ./modules/core/home.nix
+        ./modules/core/gui.nix
         nix-flatpak.nixosModules.nix-flatpak
         home-manager.nixosModules.home-manager
         { _module.args = { inherit inputs; }; }
@@ -54,6 +55,7 @@
           system = "x86_64-linux";
           modules = commonModules ++ [
             ./hosts/eulogio.nix
+            ./modules/users/eulogio.nix
             ./modules/personal/games.nix
             ./modules/personal/laptop_amd.nix
             ./modules/personal/home.nix
@@ -67,6 +69,7 @@
           system = "x86_64-linux";
           modules = commonModules ++ [
             ./hosts/thd.nix
+            ./modules/users/eulogio.nix
             ./modules/work/home.nix
             ./modules/work/packages.nix
             ./modules/work/postgres.nix
@@ -78,12 +81,24 @@
           system = "x86_64-linux";
           modules = commonModules ++ [
             ./hosts/bth.nix
+            ./modules/users/eulogio.nix
             ./modules/work/home.nix
             ./modules/work/packages.nix
             ./modules/work/postgres/bth.nix
             # ./modules/work/kafka.nix
           ];
         };
+
+        server-postgres = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [
+            ./hosts/server-postgres.nix
+            ./modules/users/vcyadmin.nix
+            ./modules/core/settings.nix
+            ./modules/work/postgres.nix
+          ];
+        };
+
       };
     };
 }

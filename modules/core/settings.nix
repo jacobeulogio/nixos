@@ -1,31 +1,41 @@
 {
-  config,
   pkgs,
   ...
 }:
 {
-  nix.settings.experimental-features = [
-    "nix-command"
-    "flakes"
-  ];
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 
-  nix.gc = {
-    automatic = true;
-    dates = "weekly";
-    options = "--delete-older-than 30d";
-  };
+  # Nix Settings
+  nix = {
 
-  environment.variables = {
-    PKG_CONFIG_PATH = "${pkgs.openssl.dev}/lib/pkgconfig";
-    OPENSSL_DIR="${pkgs.openssl.dev}";
-    OPENSSL_NO_VENDOR=1;
-    OPENSSL_LIB_DIR="${pkgs.lib.getLib pkgs.openssl}/lib";
+    settings.experimental-features = [
+      "nix-command"
+      "flakes"
+    ];
+
+    gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 30d";
+    };
+
   };
 
   nixpkgs.config.allowUnfree = true;
 
-  environment.localBinInPath = true;
+  # Env
+  environment = {
+    variables = {
+      PKG_CONFIG_PATH = "${pkgs.openssl.dev}/lib/pkgconfig";
+      OPENSSL_DIR = "${pkgs.openssl.dev}";
+      OPENSSL_NO_VENDOR = 1;
+      OPENSSL_LIB_DIR = "${pkgs.lib.getLib pkgs.openssl}/lib";
+    };
 
+    localBinInPath = true;
+  };
+
+  # Bootloader
   boot.loader = {
     grub = {
       enable = true;
@@ -35,19 +45,8 @@
     efi.canTouchEfiVariables = true;
   };
 
-  users.defaultUserShell = pkgs.zsh;
-  users.users.eulogio = {
-    isNormalUser = true;
-    description = "Eulogio";
-    extraGroups = [
-      "networkmanager"
-      "wheel"
-      "audio"
-      "video"
-      "docker"
-    ];
-  };
 
+  # Timezone and Locale
   time.timeZone = "Asia/Manila";
   i18n.defaultLocale = "en_US.UTF-8";
   i18n.extraLocaleSettings = {
@@ -62,9 +61,10 @@
     LC_TIME = "en_PH.UTF-8";
   };
 
+  # QMK
   hardware.keyboard.qmk.enable = true;
 
-  services.openssh.enable = true;
+  # Hardware Settings
   services.printing.enable = true;
   services.pulseaudio.enable = false;
   security.rtkit.enable = true;
@@ -77,7 +77,8 @@
     #media-session.enable = true;
   };
 
-  networking.hostName = "eulogio";
+  # SSH and Network
+  services.openssh.enable = true;
   networking.networkmanager.enable = true;
   # networking.wireless.enable = true;
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -87,13 +88,6 @@
     enable = true;
     xkb.options = "caps:swapescape";
   };
-
-  services.displayManager.gdm = {
-    enable = true;
-    wayland = true;
-  };
-
-  services.desktopManager.gnome.enable = true;
 
   fonts = {
     fontDir.enable = true;
@@ -107,4 +101,6 @@
   #   enable = true;
   #   enableSSHSupport = true;
   # };
+
+  system.stateVersion = "25.05";
 }

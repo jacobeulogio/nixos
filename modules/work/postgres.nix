@@ -1,17 +1,16 @@
 {
-  config,
   pkgs,
   lib,
   ...
 }:
 {
 
-  # Postgres
   services.postgresql = {
     enable = true;
     ensureDatabases = [ "analytics" ];
     package = pkgs.postgresql_17;
     enableTCPIP = true;
+
     extensions = with pkgs; [
       postgresql17Packages.tds_fdw
       postgresql17Packages.pg_cron
@@ -51,8 +50,13 @@
 
   };
 
-  # Allow port 5432
   networking.firewall.allowedTCPPorts = [ 5432 ];
+
+  environment.systemPackages = with pkgs; [
+    pgbackrest
+    pgloader
+    pgcopydb
+  ];
 
   # pgbackrest
   # services.pgbackrest = {
@@ -88,10 +92,5 @@
   #   "f /tmp/pgbackrest/all.stop 0700 postgres postgres -"
   # ];
   #
-  environment.systemPackages = with pkgs; [
-    pgbackrest
-    pgloader
-    pgcopydb
-  ];
 
 }

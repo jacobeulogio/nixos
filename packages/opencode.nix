@@ -17,7 +17,7 @@ let
     "aarch64-darwin" = "sha256-LNp9sLhNUUC4ujLYPvfPx423GlXuIS0Z2H512H5oY8s=";
     "aarch64-linux" = "sha256-xeKZwNV4ScF9p1vAcVR+vk4BiEpUH+AOGb7DQ2vLl1I=";
     "x86_64-darwin" = "sha256-4NaHXeWf57dGVV+KP3mBSIUkbIApT19BuADT0E4X+rg=";
-    "x86_64-linux" = "sha256-7Hc3FJcg2dA8AvGQlS082fO1ehGBMPXWPF8N+sAHh2I=";
+    "x86_64-linux" = "sha256-LmNn4DdnSLVmGS5yqLyk/0e5pCiKfBzKIGRvvwZ6jHY=";
   };
   bun-target = {
     "aarch64-darwin" = "bun-darwin-arm64";
