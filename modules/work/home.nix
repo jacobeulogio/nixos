@@ -12,13 +12,13 @@ let
 
     home.sessionVariables = { };
 
-    programs = lib.mkForce {
+    programs =  {
       git = {
-        userName = "jacobbenitez";
-        userEmail = "jacob.benitez@triumphhomedepot.com";
+        userName = lib.mkForce "jacobbenitez";
+        userEmail = lib.mkForce "jacob.benitez@triumphhomedepot.com";
       };
 
-      btop = lib.mkForce {
+      btop = {
         enable = true;
         settings.vim_keys = true;
       };
