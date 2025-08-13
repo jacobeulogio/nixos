@@ -32,7 +32,12 @@
       OPENSSL_LIB_DIR = "${pkgs.lib.getLib pkgs.openssl}/lib";
     };
 
+    sessionVariables = {
+      PATH = "$PATH:$HOME/nixos/scripts";
+    };
+
     localBinInPath = true;
+
   };
 
   # Bootloader
@@ -44,7 +49,6 @@
     };
     efi.canTouchEfiVariables = true;
   };
-
 
   # Timezone and Locale
   time.timeZone = "Asia/Manila";

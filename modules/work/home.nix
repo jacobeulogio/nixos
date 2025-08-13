@@ -1,32 +1,23 @@
-{ lib, config, ... }:
-let
-  userList = [
-    "eulogio"
-    "vcyadmin"
-  ];
+{ pkgs, lib, ... }:
+{
+  home-manager.users.eulogio = {
 
-  userConfig = {
-    home.sessionPath = lib.mkForce [
-      "$HOME/nixos/scripts"
+    home.packages = with pkgs; [
+      kubectl
+      docker
     ];
 
-    home.sessionVariables = { };
+    home.sessionPath = [ ];
 
-    programs =  {
+    home.sessionVariables = {
+      #   GOOGLE_CLOUD_PROJECT = "dashboard-441809";
+    };
+
+    programs = {
       git = {
         userName = lib.mkForce "jacobbenitez";
         userEmail = lib.mkForce "jacob.benitez@triumphhomedepot.com";
       };
-
-      btop = {
-        enable = true;
-        settings.vim_keys = true;
-      };
     };
   };
-in
-{
-  home-manager.users = lib.genAttrs (builtins.filter (user: config.users.users ? ${user}) userList) (
-    user: userConfig
-  );
 }

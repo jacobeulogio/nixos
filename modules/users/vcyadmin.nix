@@ -1,4 +1,10 @@
-{ config, pkgs, lib, ... }: { 
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
+{
 
   users.users.vcyadmin = {
     isNormalUser = true;
@@ -19,4 +25,19 @@
   };
 
   networking.hostName = "nixos-postgres";
+
+  home-manager.users.vcyadmin = {
+
+    programs = {
+      git = {
+        userName = "jacobbenitez";
+        userEmail = "jacob.benitez@triumphhomedepot.com";
+      };
+
+      btop = {
+        enable = true;
+        settings.vim_keys = true;
+      };
+    };
+  };
 }

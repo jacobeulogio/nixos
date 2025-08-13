@@ -41,7 +41,6 @@
         ./modules/core/dev.nix
         ./modules/core/settings.nix
         ./modules/core/hyprland.nix
-        ./modules/core/home.nix
         ./modules/core/gui.nix
         nix-flatpak.nixosModules.nix-flatpak
         home-manager.nixosModules.home-manager
@@ -58,7 +57,6 @@
             ./modules/users/eulogio.nix
             ./modules/personal/games.nix
             ./modules/personal/laptop_amd.nix
-            ./modules/personal/home.nix
             chaotic.nixosModules.nyx-cache
             chaotic.nixosModules.nyx-overlay
             chaotic.nixosModules.nyx-registry
