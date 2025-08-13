@@ -39,5 +39,7 @@
         settings.vim_keys = true;
       };
     };
+
+    home.stateVersion = "25.05";
   };
 }
