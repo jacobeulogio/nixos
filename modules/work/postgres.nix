@@ -8,6 +8,11 @@
   services.postgresql = {
     enable = true;
     ensureDatabases = [ "analytics" ];
+    ensureUsers = [
+      { name = "eulogio"; ensureDBOwnership = true; ensureClauses = { superuser = true; }; }
+      { name = "mark"; ensureDBOwnership = false; }
+      { name = "vcyadmin"; ensureDBOwnership = false; ensureClauses = { superuser = true; }; }
+    ];
     package = pkgs.postgresql_17;
     enableTCPIP = true;
 
