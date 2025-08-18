@@ -43,8 +43,8 @@
     tmux
     zsh-powerlevel10k
     # gemini-cli
-    # opencode
-    (pkgs.callPackage ../../packages/opencode.nix { })
+    opencode
+    # (pkgs.callPackage ../../packages/opencode.nix { })
     claude-code
 
   ];
