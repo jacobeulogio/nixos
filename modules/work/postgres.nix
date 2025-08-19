@@ -9,7 +9,7 @@
     enable = true;
     ensureDatabases = [ "analytics" ];
     ensureUsers = [
-      { name = "eulogio"; ensureDBOwnership = true; ensureClauses = { superuser = true; }; }
+      { name = "eulogio"; ensureDBOwnership = false; ensureClauses = { superuser = true; }; }
       { name = "mark"; ensureDBOwnership = false; }
       { name = "vcyadmin"; ensureDBOwnership = false; ensureClauses = { superuser = true; }; }
     ];
