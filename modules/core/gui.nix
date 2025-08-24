@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ pkgs, ... }:
 {
 
   # Gnome
@@ -14,7 +14,18 @@
     python313Packages.adblock
     vivaldi
     vial
+    ztoom-us
+    mpv
+    vlc
   ];
+
+  programs.obs-studio = {
+    enable = true;
+    enableVirtualCamera = true;
+    plugins = with pkgs.obs-studio-plugins; [
+      droidcam-obs
+    ];
+  };
 
   xdg.mime = {
     enable = true;
