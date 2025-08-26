@@ -5,6 +5,7 @@
   services.displayManager.gdm = {
     enable = true;
     wayland = true;
+    autoSuspend = false;
   };
 
   services.desktopManager.gnome.enable = true;
@@ -14,7 +15,7 @@
     python313Packages.adblock
     vivaldi
     vial
-    ztoom-us
+    zoom-us
     mpv
     vlc
   ];
