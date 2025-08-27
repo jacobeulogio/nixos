@@ -94,6 +94,7 @@
             ./modules/users/vcyadmin.nix
             ./modules/core/settings.nix
             ./modules/work/postgres.nix
+            ./modules/work/monitoring.nix
             home-manager.nixosModules.home-manager
           ];
         };
