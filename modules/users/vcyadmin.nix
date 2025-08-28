@@ -4,6 +4,7 @@
 }:
 {
   users.users.vcyadmin = {
+    isNormalUser = true;
     description = "vcyadmin";
     initialPassword = "password";
     extraGroups = [
