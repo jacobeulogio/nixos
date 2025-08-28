@@ -36,23 +36,29 @@
       ...
     }@inputs:
     let
-      commonModules = [
-        ./modules/core/packages.nix
-        ./modules/core/dev.nix
+
+      userModule = user: ./modules/users/${user}.nix;
+
+      core = [
+        ./modules/core/cli.nix
         ./modules/core/settings.nix
-        ./modules/core/hyprland.nix
-        ./modules/core/gui.nix
-        nix-flatpak.nixosModules.nix-flatpak
         home-manager.nixosModules.home-manager
         { _module.args = { inherit inputs; }; }
+      ];
+      gui = [
+        ./modules/core/dev.nix
+        ./modules/core/gui.nix
+        ./modules/core/packages.nix
+        ./modules/core/hyprland.nix
+        nix-flatpak.nixosModules.nix-flatpak
       ];
     in
     {
       nixosConfigurations = {
-
         eulogio = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
-          modules = commonModules ++ [
+          modules = core ++ gui ++ [
+            (userModule "eulogio")
             ./hosts/eulogio.nix
             ./modules/users/eulogio.nix
             ./modules/personal/games.nix
@@ -65,37 +71,35 @@
 
         thd = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
-          modules = commonModules ++ [
+          modules = core ++ gui ++ [
+            (userModule "eulogio")
             ./hosts/thd.nix
             ./modules/users/eulogio.nix
             ./modules/work/home.nix
             ./modules/work/packages.nix
             ./modules/work/postgres.nix
-            # ./modules/work/kafka.nix
           ];
         };
 
         bth = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
-          modules = commonModules ++ [
+          modules = core ++ gui ++ [
+            (userModule "eulogio")
             ./hosts/bth.nix
             ./modules/users/eulogio.nix
             ./modules/work/home.nix
             ./modules/work/packages.nix
-            # ./modules/work/postgres/bth.nix
-            # ./modules/work/kafka.nix
           ];
         };
 
         server-postgres = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
-          modules = [
+          modules = core ++ [
+            (userModule "vcyadmin")
             ./hosts/server-postgres.nix
             ./modules/users/vcyadmin.nix
-            ./modules/core/settings.nix
             ./modules/work/postgres.nix
             ./modules/work/monitoring.nix
-            home-manager.nixosModules.home-manager
           ];
         };
 
