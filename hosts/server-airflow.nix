@@ -33,7 +33,7 @@
       device = lib.mkForce "/dev/sda";
       useOSProber = lib.mkForce true;
     };
-    # systemd-boot = lib.mkForce false;
+    systemd-boot.enable = lib.mkForce false;
     efi.canTouchEfiVariables = lib.mkForce false;
   };
   
