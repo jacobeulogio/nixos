@@ -37,12 +37,12 @@
 
   # Bootloader
   boot.loader = {
+    systemd-boot.enable = lib.mkDefault true;
     grub = {
-      enable = false;
-      efiSupport = false;
+      enable = lib.mkDefault false;
+      efiSupport = lib.mkDefault false;
     };
-    systemd-boot.enable = true;
-    efi.canTouchEfiVariables = true;
+    efi.canTouchEfiVariables = lib.mkDefault true;
   };
 
   # Timezone and Locale
@@ -75,17 +75,17 @@
   };
   hardware.keyboard.qmk.enable = true;
 
+  services.xserver = {
+    enable = true;
+    xkb.options = "caps:swapescape";
+  };
+
   # SSH and Network
   services.openssh.enable = true;
   networking.networkmanager.enable = true;
   # networking.wireless.enable = true;
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
-  services.xserver = {
-    enable = true;
-    xkb.options = "caps:swapescape";
-  };
 
   fonts = {
     fontDir.enable = true;

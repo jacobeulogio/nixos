@@ -10,6 +10,8 @@
 
   # ======================
 
+  networking.hostName = "eulogio-thd"; 
+
   networking.firewall.allowedTCPPorts = [
     8080
     5000

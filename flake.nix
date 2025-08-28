@@ -36,8 +36,8 @@
       ...
     }@inputs:
     let
-
       userModule = user: ./modules/users/${user}.nix;
+      mkHost = host: ./hosts/${host}.nix;
 
       core = [
         ./modules/core/cli.nix
@@ -52,54 +52,63 @@
         ./modules/core/hyprland.nix
         nix-flatpak.nixosModules.nix-flatpak
       ];
+      work = [
+        ./modules/work/home.nix
+        ./modules/work/packages.nix
+      ];
+      chaoticNyx = [
+        chaotic.nixosModules.nyx-cache
+        chaotic.nixosModules.nyx-overlay
+        chaotic.nixosModules.nyx-registry
+        ];
     in
     {
       nixosConfigurations = {
         eulogio = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
-          modules = core ++ gui ++ [
+          modules = core ++ gui ++ chaoticNyx ++ [
             (userModule "eulogio")
-            ./hosts/eulogio.nix
+            (mkHost "eulogio")
             ./modules/users/eulogio.nix
             ./modules/personal/games.nix
             ./modules/personal/laptop_amd.nix
-            chaotic.nixosModules.nyx-cache
-            chaotic.nixosModules.nyx-overlay
-            chaotic.nixosModules.nyx-registry
           ];
         };
 
         thd = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
-          modules = core ++ gui ++ [
+          modules = core ++ gui ++ work ++ [
             (userModule "eulogio")
+            (mkHost "thd") 
             ./hosts/thd.nix
-            ./modules/users/eulogio.nix
-            ./modules/work/home.nix
-            ./modules/work/packages.nix
             ./modules/work/postgres.nix
           ];
         };
 
         bth = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
-          modules = core ++ gui ++ [
+          modules = core ++ gui ++ work ++ [
+            (mkHost "bth") 
             (userModule "eulogio")
             ./hosts/bth.nix
-            ./modules/users/eulogio.nix
-            ./modules/work/home.nix
-            ./modules/work/packages.nix
           ];
         };
 
         server-postgres = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = core ++ [
+            (mkHost "server-postgres") 
             (userModule "vcyadmin")
-            ./hosts/server-postgres.nix
-            ./modules/users/vcyadmin.nix
             ./modules/work/postgres.nix
             ./modules/work/monitoring.nix
+          ];
+        };
+
+        server-airflow = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = core ++ [
+            (mkHost "server-airflow") 
+            (userModule "vcyadmin")
           ];
         };
 

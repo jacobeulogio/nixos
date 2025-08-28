@@ -1,13 +1,23 @@
-{ config, pkgs, chaotic, lib, ... }: {
+{
+  pkgs,
+  chaotic,
+  lib,
+  ...
+}:
+{
 
   boot.kernelPackages = lib.mkForce pkgs.linuxPackages_latest;
 
-  boot.kernelParams = ["quiet" "amd_pstate=active" "amdgpu.ppfeaturemask=0xffffffff"];
+  boot.kernelParams = [
+    "quiet"
+    "amd_pstate=active"
+    "amdgpu.ppfeaturemask=0xffffffff"
+  ];
 
   boot.kernelModules = [
-    "v4l2loopback" 
+    "v4l2loopback"
   ];
- 
+
   boot.extraModulePackages = [
     pkgs.linuxKernel.packages.linux_6_16.v4l2loopback
   ];

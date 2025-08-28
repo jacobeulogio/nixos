@@ -33,14 +33,14 @@
     efi.canTouchEfiVariables = lib.mkForce false;
   };
 
-  networking.hostName = "nixos-postgres"; 
+  networking.hostName = "nixos-airflow"; 
   networking.networkmanager.enable = true;
   networking = {
     useDHCP = false;
     interfaces.ens160 = {
       ipv4.addresses = [
         {
-          address = "192.168.102.64";
+          address = "192.168.102.65";
           prefixLength = 24;
         }
       ];

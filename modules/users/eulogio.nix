@@ -1,4 +1,8 @@
-{ config, pkgs, lib, ... }: { 
+{
+  pkgs,
+  ...
+}:
+{
 
   users.users.eulogio = {
     isNormalUser = true;
@@ -11,10 +15,8 @@
       "docker"
     ];
   };
-    
-  users.defaultUserShell = pkgs.zsh;
 
-  networking.hostName = "eulogio";
+  users.defaultUserShell = pkgs.zsh;
 
   home-manager.users.eulogio = {
     imports = [ ];

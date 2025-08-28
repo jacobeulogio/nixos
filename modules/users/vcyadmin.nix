@@ -1,14 +1,11 @@
 {
-  config,
   pkgs,
-  lib,
   ...
 }:
 {
-
   users.users.vcyadmin = {
-    isNormalUser = true;
     description = "vcyadmin";
+    initialPassword = "password";
     extraGroups = [
       "networkmanager"
       "wheel"
@@ -23,8 +20,6 @@
       curl
     ];
   };
-
-  networking.hostName = "nixos-postgres";
 
   home-manager.users.vcyadmin = {
 
