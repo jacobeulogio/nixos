@@ -11,6 +11,7 @@
   # ======================
 
   # boot.kernelPackages = lib.mkForce pkgs.linuxPackages_cachyos;
+  networking.hostName = "eulogio";
 
   # ======================
 

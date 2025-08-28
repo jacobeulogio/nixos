@@ -33,9 +33,9 @@
     efi.canTouchEfiVariables = lib.mkForce false;
   };
 
-  networking.hostName = "nixos-airflow"; 
   networking.networkmanager.enable = true;
   networking = {
+    hostName = "nixos-airflow";
     useDHCP = false;
     interfaces.ens160 = {
       ipv4.addresses = [

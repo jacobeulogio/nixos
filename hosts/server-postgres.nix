@@ -33,9 +33,9 @@
     efi.canTouchEfiVariables = lib.mkForce false;
   };
 
-  networking.hostName = "nixos-postgres"; 
-  networking.networkmanager.enable = true;
   networking = {
+    hostName = "eulogio-bth"; 
+    networkmanager.enable = true;
     useDHCP = false;
     interfaces.ens160 = {
       ipv4.addresses = [
