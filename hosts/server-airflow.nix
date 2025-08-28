@@ -23,6 +23,8 @@
 
   # ===============================
 
+  virtualisation.docker.enable = true;
+
   boot.loader = {
     grub = {
       enable = lib.mkForce true;

@@ -34,7 +34,7 @@
   };
 
   networking = {
-    hostName = "eulogio-bth"; 
+    hostName = "nixos-postgres"; 
     networkmanager.enable = true;
     useDHCP = false;
     interfaces.ens160 = {
