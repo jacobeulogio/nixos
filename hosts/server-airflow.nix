@@ -27,21 +27,16 @@
 
   virtualisation.docker.enable = true;
 
-  # boot.loader = {
-  #   grub = {
-  #     enable = lib.mkForce true;
-  #     device = lib.mkForce "/dev/sda";
-  #     useOSProber = lib.mkForce true;
-  #   };
-  #   systemd-boot = lib.mkForce false;
-  #   efi.canTouchEfiVariables = lib.mkForce false;
-  # };
+  boot.loader = {
+    grub = {
+      enable = lib.mkForce true;
+      device = lib.mkForce "/dev/sda";
+      useOSProber = lib.mkForce true;
+    };
+    # systemd-boot = lib.mkForce false;
+    efi.canTouchEfiVariables = lib.mkForce false;
+  };
   
-  boot.loader.grub.enable = lib.mkForce true;
-  boot.loader.grub.device = lib.mkForce "/dev/sda";
-  boot.loader.grub.useOSProber = lib.mkForce true;
-  boot.loader.grub.efiSupport = lib.mkForce false;
-
   networking.networkmanager.enable = true;
   networking = {
     hostName = "nixos-airflow";
