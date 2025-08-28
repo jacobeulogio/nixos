@@ -2,26 +2,18 @@
   description = "My config";
 
   inputs = {
-    nixpkgs = {
-      url = "github:nixos/nixpkgs/nixos-unstable";
-    };
+    nixpkgs = { url = "github:nixos/nixpkgs/nixos-unstable"; };
+    chaotic = { url = "github:chaotic-cx/nyx/nyxpkgs-unstable"; };
+    nix-flatpak = { url = "github:gmodena/nix-flatpak"; };
 
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    chaotic = {
-      url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
-    };
-
     neovim-nightly-overlay = {
       url = "github:nix-community/neovim-nightly-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    nix-flatpak = {
-      url = "github:gmodena/nix-flatpak";
     };
 
   };
@@ -69,7 +61,6 @@
           modules = core ++ gui ++ chaoticNyx ++ [
             (userModule "eulogio")
             (mkHost "eulogio")
-            ./modules/users/eulogio.nix
             ./modules/personal/games.nix
             ./modules/personal/laptop_amd.nix
           ];
@@ -80,7 +71,6 @@
           modules = core ++ gui ++ work ++ [
             (userModule "eulogio")
             (mkHost "thd") 
-            ./hosts/thd.nix
             ./modules/work/postgres.nix
           ];
         };
@@ -90,7 +80,6 @@
           modules = core ++ gui ++ work ++ [
             (mkHost "bth") 
             (userModule "eulogio")
-            ./hosts/bth.nix
           ];
         };
 
