@@ -5,7 +5,7 @@
 {
   users.users.vcyadmin = {
     description = "vcyadmin";
-    initialPassword = "password";
+    # initialPassword = "password";
     extraGroups = [
       "networkmanager"
       "wheel"

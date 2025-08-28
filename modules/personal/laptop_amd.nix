@@ -27,10 +27,10 @@
   services = {
     power-profiles-daemon.enable = false;
 
-    logind = {
-      lidSwitch = "sleep";
-      lidSwitchExternalPower = "sleep";
-      lidSwitchDocked = "sleep";
+    logind.settings.Login = {
+      HandleLidSwitch = "sleep";
+      HandleLidSwitchExternalPower = "sleep";
+      HandleLidSwitchDocked = "sleep";
     };
 
     tlp = {
