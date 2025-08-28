@@ -1,24 +1,22 @@
 {
   pkgs,
+  lib,
   ...
 }:
 {
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
-  # Nix Settings
+  # Nix
   nix = {
-
     settings.experimental-features = [
       "nix-command"
       "flakes"
     ];
-
     gc = {
       automatic = true;
       dates = "weekly";
       options = "--delete-older-than 15d";
     };
-
   };
 
   nixpkgs.config.allowUnfree = true;
@@ -31,22 +29,19 @@
       OPENSSL_NO_VENDOR = 1;
       OPENSSL_LIB_DIR = "${pkgs.lib.getLib pkgs.openssl}/lib";
     };
-
     sessionVariables = {
       PATH = "$PATH:$HOME/nixos/scripts";
     };
-
     localBinInPath = true;
-
   };
 
   # Bootloader
   boot.loader = {
     grub = {
-      enable = true;
-      device = "nodev";
-      efiSupport = true;
+      enable = false;
+      efiSupport = false;
     };
+    systemd-boot.enable = true;
     efi.canTouchEfiVariables = true;
   };
 
@@ -65,8 +60,6 @@
     LC_TIME = "en_PH.UTF-8";
   };
 
-  # QMK
-  hardware.keyboard.qmk.enable = true;
 
   # Hardware Settings
   services.printing.enable = true;
@@ -80,6 +73,7 @@
     #jack.enable = true;
     #media-session.enable = true;
   };
+  hardware.keyboard.qmk.enable = true;
 
   # SSH and Network
   services.openssh.enable = true;
