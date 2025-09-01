@@ -20,6 +20,7 @@
       gh
       curl
       tmux
+      uv
     ];
   };
 
