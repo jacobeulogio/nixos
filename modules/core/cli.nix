@@ -8,7 +8,7 @@
     enable = true;
   };
 
-  # nixpkgs.overlays = [ inputs.neovim-nightly-overlay.overlays.default ];
+  nixpkgs.overlays = [ inputs.neovim-nightly-overlay.overlays.default ];
   programs.neovim = {
     enable = true;
     defaultEditor = true;

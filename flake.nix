@@ -28,7 +28,7 @@
       ...
     }@inputs:
     let
-      userModule = user: ./modules/users/${user}.nix;
+      mkUser = user: ./modules/users/${user}.nix;
       mkHost = host: ./hosts/${host}.nix;
 
       core = [
@@ -59,7 +59,7 @@
         eulogio = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = core ++ gui ++ chaoticNyx ++ [
-            (userModule "eulogio")
+            (mkUser "eulogio")
             (mkHost "eulogio")
             ./modules/personal/games.nix
             ./modules/personal/laptop_amd.nix
@@ -69,7 +69,7 @@
         thd = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = core ++ gui ++ work ++ [
-            (userModule "eulogio")
+            (mkUser "eulogio")
             (mkHost "thd") 
             ./modules/work/postgres.nix
           ];
@@ -79,7 +79,7 @@
           system = "x86_64-linux";
           modules = core ++ gui ++ work ++ [
             (mkHost "bth") 
-            (userModule "eulogio")
+            (mkUser "eulogio")
           ];
         };
 
@@ -87,7 +87,7 @@
           system = "x86_64-linux";
           modules = core ++ [
             (mkHost "server-postgres") 
-            (userModule "vcyadmin")
+            (mkUser "vcyadmin")
             ./modules/work/postgres.nix
             ./modules/work/monitoring.nix
           ];
@@ -97,7 +97,7 @@
           system = "x86_64-linux";
           modules = core ++ [
             (mkHost "server-airflow") 
-            (userModule "vcyadmin")
+            (mkUser "vcyadmin")
           ];
         };
 
