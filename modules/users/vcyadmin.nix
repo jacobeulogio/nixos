@@ -19,6 +19,7 @@
       git
       gh
       curl
+      tmux
     ];
   };
 
