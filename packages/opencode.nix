@@ -1,24 +1,18 @@
 {
   lib,
+  stdenv,
   stdenvNoCC,
   buildGoModule,
   bun,
   fetchFromGitHub,
+  makeBinaryWrapper,
   models-dev,
   nix-update-script,
   testers,
   writableTmpDirAsHomeHook,
-  stdenv,
-  makeWrapper,
 }:
 
 let
-  opencode-node-modules-hash = {
-    "aarch64-darwin" = "sha256-LNp9sLhNUUC4ujLYPvfPx423GlXuIS0Z2H512H5oY8s=";
-    "aarch64-linux" = "sha256-xeKZwNV4ScF9p1vAcVR+vk4BiEpUH+AOGb7DQ2vLl1I=";
-    "x86_64-darwin" = "sha256-4NaHXeWf57dGVV+KP3mBSIUkbIApT19BuADT0E4X+rg=";
-    "x86_64-linux" = "sha256-LmNn4DdnSLVmGS5yqLyk/0e5pCiKfBzKIGRvvwZ6jHY=";
-  };
   bun-target = {
     "aarch64-darwin" = "bun-darwin-arm64";
     "aarch64-linux" = "bun-linux-arm64";
@@ -28,12 +22,12 @@ let
 in
 stdenvNoCC.mkDerivation (finalAttrs: {
   pname = "opencode";
-  version = "0.4.12";
+  version = "0.6.3";
   src = fetchFromGitHub {
     owner = "sst";
     repo = "opencode";
     tag = "v${finalAttrs.version}";
-    hash = "sha256-3o8bHU5vSG+MxbvjLzlqeagnW9hnekl0hlj3EiNFaaQ=";
+    hash = "sha256-hufgCO3g0WZT4+hX1lqmhvrthFO30c0NS3ryNJMmOxo=";
   };
 
   tui = buildGoModule {
@@ -42,7 +36,7 @@ stdenvNoCC.mkDerivation (finalAttrs: {
 
     modRoot = "packages/tui";
 
-    vendorHash = "sha256-jINbGug/SPGBjsXNsC9X2r5TwvrOl5PJDL+lrOQP69Q=";
+    vendorHash = "sha256-8pwVQVraLSE1DRL6IFMlQ/y8HQ8464N/QwAS8Faloq4=";
 
     subPackages = [ "cmd/opencode" ];
 
@@ -83,11 +77,14 @@ stdenvNoCC.mkDerivation (finalAttrs: {
 
        export BUN_INSTALL_CACHE_DIR=$(mktemp -d)
 
+       # Disable post-install scripts to avoid shebang issues
        bun install \
          --filter=opencode \
          --force \
          --frozen-lockfile \
-         --no-progress
+         --ignore-scripts \
+         --no-progress \
+         --production
 
       runHook postBuild
     '';
@@ -104,15 +101,15 @@ stdenvNoCC.mkDerivation (finalAttrs: {
     # Required else we get errors that our fixed-output derivation references store paths
     dontFixup = true;
 
-    outputHash = opencode-node-modules-hash.${stdenvNoCC.hostPlatform.system};
+    outputHash = "sha256-PmLO0aU2E7NlQ7WtoiCQzLRw4oKdKxS5JI571lvbhHo=";
     outputHashAlgo = "sha256";
     outputHashMode = "recursive";
   };
 
   nativeBuildInputs = [
     bun
+    makeBinaryWrapper
     models-dev
-    makeWrapper
   ];
 
   patches = [
@@ -155,6 +152,10 @@ stdenvNoCC.mkDerivation (finalAttrs: {
     runHook postInstall
   '';
 
+  # Execution of commands using bash-tool fail on linux with
+  # Error [ERR_DLOPEN_FAILED]: libstdc++.so.6: cannot open shared object file: No such
+  # file or directory
+  # Thus, we add libstdc++.so.6 manually to LD_LIBRARY_PATH
   postFixup = ''
     wrapProgram $out/bin/opencode \
       --set LD_LIBRARY_PATH "${lib.makeLibraryPath [ stdenv.cc.cc.lib ]}"

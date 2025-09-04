@@ -1,7 +1,7 @@
-diff --git a/packages/opencode/src/provider/models-macro.ts b/packages/opencode/src/provider/models-macro.ts
+diff --git i/packages/opencode/src/provider/models-macro.ts w/packages/opencode/src/provider/models-macro.ts
 index 91a0348..4f60069 100644
---- a/packages/opencode/src/provider/models-macro.ts
-+++ b/packages/opencode/src/provider/models-macro.ts
+--- i/packages/opencode/src/provider/models-macro.ts
++++ w/packages/opencode/src/provider/models-macro.ts
 @@ -1,4 +1,15 @@
  export async function data() {
 +  const localApiJsonPath = process.env.MODELS_DEV_API_JSON
