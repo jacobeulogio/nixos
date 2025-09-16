@@ -64,6 +64,10 @@
     v4l-utils
     android-tools
     adb-sync
+    scrcpy
+
+    slack
+    hubstaff
   ];
 
 }

@@ -12,7 +12,6 @@
 
   environment.systemPackages = with pkgs; [
     hyprpicker
-    rofi-wayland
     waybar
     nwg-look
     pavucontrol
@@ -20,7 +19,7 @@
     networkmanagerapplet
     cliphist
     swaynotificationcenter
-    rofi-wayland
+    rofi
     papirus-icon-theme
     hyprpaper
     waybar
