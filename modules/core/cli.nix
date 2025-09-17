@@ -41,6 +41,7 @@
     tmux
     zsh-powerlevel10k
     opencode
+    qmk
     # (pkgs.callPackage ../../packages/opencode.nix { })
   ];
 }
