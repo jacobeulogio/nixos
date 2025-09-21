@@ -1,7 +1,6 @@
 {
   pkgs,
-  lib,
-  config,
+  ...
 }:
 {
   environment.systemPackages = with pkgs; [
@@ -10,5 +9,4 @@
     slack
     hubstaff
   ];
-
 }
