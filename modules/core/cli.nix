@@ -43,5 +43,8 @@
     opencode
     qmk
     # (pkgs.callPackage ../../packages/opencode.nix { })
+
+    google-cloud-sdk
+    scrcpy
   ];
 }

@@ -61,6 +61,7 @@
           modules = core ++ gui ++ chaoticNyx ++ [
             (mkUser "eulogio")
             (mkHost "eulogio")
+            ./modules/personal/gui.nix
             ./modules/personal/games.nix
             ./modules/personal/laptop_amd.nix
           ];

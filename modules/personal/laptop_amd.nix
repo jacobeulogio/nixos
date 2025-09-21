@@ -60,14 +60,9 @@
     supergfxctl
     asusctl
     linuxKernel.packages.linux_zen.cpupower
-    spotify
     v4l-utils
     android-tools
     adb-sync
-    scrcpy
-
-    slack
-    hubstaff
   ];
 
 }

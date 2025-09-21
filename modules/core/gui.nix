@@ -14,6 +14,7 @@
     qutebrowser
     python313Packages.adblock
     vivaldi
+    google-chrome
     vial
     zoom-us
     mpv
