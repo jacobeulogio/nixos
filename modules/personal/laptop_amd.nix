@@ -46,7 +46,7 @@
         CPU_BOOST_ON_BAT = 0;
         AMDGPU_ABM_LEVEL_ON_AC = 0;
         AMDGPU_ABM_LEVEL_ON_BAT = 0;
-        STOP_CHARGE_THRESH_BAT0 = 85;
+        # STOP_CHARGE_THRESH_BAT0 = 85;
         USB_AUTOSUSPEND = 0;
         RUNTIME_PM_DRIVER_DENYLIST = "mei_me";
       };

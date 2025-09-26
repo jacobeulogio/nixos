@@ -8,5 +8,6 @@
     qbittorrent-enhanced
     slack
     hubstaff
+    gimp3
   ];
 }
