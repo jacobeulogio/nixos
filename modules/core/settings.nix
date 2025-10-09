@@ -6,6 +6,8 @@
 {
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
+  # programs.nix-ld.enable = true;
+
   # Nix
   nix = {
     settings.experimental-features = [
@@ -60,11 +62,11 @@
     LC_TIME = "en_PH.UTF-8";
   };
 
-
   # Hardware Settings
   services.printing.enable = true;
   services.pulseaudio.enable = false;
   security.rtkit.enable = true;
+
   services.pipewire = {
     enable = true;
     alsa.enable = true;
@@ -73,6 +75,13 @@
     #jack.enable = true;
     #media-session.enable = true;
   };
+
+  xdg.portal = {
+    enable = true;
+    wlr.enable = true;
+    extraPortals = [ pkgs.xdg-desktop-portal-hyprland ];
+  };
+
   hardware.keyboard.qmk.enable = true;
 
   services.xserver = {

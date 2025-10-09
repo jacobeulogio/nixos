@@ -19,7 +19,7 @@
   ];
 
   boot.extraModulePackages = [
-    pkgs.linuxKernel.packages.linux_6_16.v4l2loopback
+    pkgs.linuxKernel.packages.linux_6_17.v4l2loopback
   ];
 
   powerManagement.enable = true;
@@ -46,7 +46,6 @@
         CPU_BOOST_ON_BAT = 0;
         AMDGPU_ABM_LEVEL_ON_AC = 0;
         AMDGPU_ABM_LEVEL_ON_BAT = 0;
-        # STOP_CHARGE_THRESH_BAT0 = 85;
         USB_AUTOSUSPEND = 0;
         RUNTIME_PM_DRIVER_DENYLIST = "mei_me";
       };

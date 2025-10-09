@@ -11,12 +11,9 @@
   services.desktopManager.gnome.enable = true;
 
   environment.systemPackages = with pkgs; [
-    qutebrowser
-    python313Packages.adblock
+    qutebrowser python313Packages.adblock
     vivaldi
-    google-chrome
     vial
-    zoom-us
     mpv
     vlc
   ];
@@ -29,6 +26,7 @@
     ];
   };
 
+  # Defaults
   xdg.mime = {
     enable = true;
     defaultApplications = {
@@ -44,5 +42,25 @@
   environment.sessionVariables = {
     BROWSER = "qutebrowser";
   };
+
+  services.flatpak = {
+    enable = true;
+    packages = [
+      "io.dbeaver.DBeaverCommunity"
+    ];
+  };
+
+  services.udev.packages = with pkgs; [
+    via
+    vial
+  ];
+
+  fonts.packages = with pkgs; [
+    noto-fonts
+    noto-fonts-emoji
+    nerd-fonts.jetbrains-mono
+    nerd-fonts.geist-mono
+  ];
+
 
 }

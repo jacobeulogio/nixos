@@ -41,10 +41,11 @@
     tmux
     zsh-powerlevel10k
     opencode
-    qmk
-    # (pkgs.callPackage ../../packages/opencode.nix { })
+    # qmk
 
     google-cloud-sdk
     scrcpy
   ];
+
+  virtualisation.docker.enable = true;
 }
