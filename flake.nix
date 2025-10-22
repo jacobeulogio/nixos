@@ -2,15 +2,10 @@
   description = "My config";
 
   inputs = {
-    nixpkgs = {
-      url = "github:nixos/nixpkgs/nixos-unstable";
-    };
-    chaotic = {
-      url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
-    };
-    nix-flatpak = {
-      url = "github:gmodena/nix-flatpak";
-    };
+    nixpkgs = { url = "github:nixos/nixpkgs/nixos-unstable"; };
+    nixpkgs-stable = { url = "github:nixos/nixpkgs/nixos-25.05"; };
+    chaotic = { url = "github:chaotic-cx/nyx/nyxpkgs-unstable"; };
+    nix-flatpak = { url = "github:gmodena/nix-flatpak"; };
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -21,7 +16,6 @@
       url = "github:nix-community/neovim-nightly-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
   };
 
   outputs =
@@ -40,7 +34,6 @@
       core = [
         ./modules/core/cli.nix
         ./modules/core/settings.nix
-        ./modules/core/services.nix
         home-manager.nixosModules.home-manager
         { _module.args = { inherit inputs; }; }
       ];

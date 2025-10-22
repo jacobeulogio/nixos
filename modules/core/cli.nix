@@ -15,16 +15,23 @@
   };
 
   environment.systemPackages = with pkgs; [
+    # essentials
     git
     gh
     vim
+
+    # terminal
+    wezterm
+    tmux
+    zsh-powerlevel10k
+
+    # utils
     atuin
     yazi
     stow
     wget
     curl
     tree
-    wl-clipboard
     fzf
     fd
     ripgrep
@@ -37,12 +44,11 @@
     resvg
     imagemagick
     openssl
-    wezterm
-    tmux
-    zsh-powerlevel10k
+    qmk
     opencode
-    # qmk
+    parallel
 
+    # work
     google-cloud-sdk
     scrcpy
   ];

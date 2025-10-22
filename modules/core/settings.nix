@@ -4,7 +4,8 @@
   ...
 }:
 {
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  # boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxPackages_6_16;
 
   # programs.nix-ld.enable = true;
 
@@ -87,6 +88,10 @@
   services.xserver = {
     enable = true;
     xkb.options = "caps:swapescape";
+  };
+
+  services.cron = {
+    enable = true;
   };
 
   # SSH and Network

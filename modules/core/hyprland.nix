@@ -12,6 +12,7 @@
 
   environment.systemPackages = with pkgs; [
     hyprpicker
+    wl-clipboard
     waybar
     nwg-look
     pavucontrol

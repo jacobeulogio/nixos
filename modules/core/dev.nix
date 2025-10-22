@@ -12,6 +12,7 @@
     nodejs
     go
     bun
+    # opencode
 
     # Lsp
     ruff

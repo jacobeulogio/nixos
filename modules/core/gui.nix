@@ -16,6 +16,7 @@
     vial
     mpv
     vlc
+    # zoom-us
   ];
 
   programs.obs-studio = {
