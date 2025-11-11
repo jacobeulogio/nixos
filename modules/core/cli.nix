@@ -51,6 +51,7 @@
     # work
     google-cloud-sdk
     scrcpy
+    duckdb
   ];
 
   virtualisation.docker.enable = true;
