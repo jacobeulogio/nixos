@@ -21,11 +21,15 @@
     mangohud
     goverlay
     discord
+
     wine-wayland
     winetricks
+    wineWowPackages.stable
+
     lutris
     protonup-qt
     heroic
+    protontricks
   ];
 
   hardware.graphics = {

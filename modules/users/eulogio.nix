@@ -25,8 +25,10 @@
 
       git = {
         enable = true;
-        userName = "jacobeulogio";
-        userEmail = "benitezjacob35@gmail.com";
+        settings.user = {
+          name = "jacobeulogio";
+          email = "benitezjacob35@gmail.com";
+        };
       };
 
       btop = {
