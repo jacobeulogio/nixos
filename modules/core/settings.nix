@@ -4,8 +4,8 @@
   ...
 }:
 {
-  # boot.kernelPackages = pkgs.linuxPackages_latest;
-  boot.kernelPackages = pkgs.linuxPackages_6_18;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
+  # boot.kernelPackages = pkgs.linuxPackages_6_18;
 
   # programs.nix-ld.enable = true;
 
