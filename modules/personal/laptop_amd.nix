@@ -19,7 +19,7 @@
   ];
 
   boot.extraModulePackages = [
-    pkgs.linuxKernel.packages.linux_6_18.v4l2loopback
+    pkgs.linuxKernel.packages.linux_6_19.v4l2loopback
   ];
 
   powerManagement.enable = true;

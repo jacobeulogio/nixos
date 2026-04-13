@@ -10,7 +10,6 @@
       supportedSystems = [
         "x86_64-linux"
         "aarch64-linux"
-        "x86_64-darwin"
         "aarch64-darwin"
       ];
       forEachSupportedSystem =
@@ -18,6 +17,7 @@
         inputs.nixpkgs.lib.genAttrs supportedSystems (
           system:
           f {
+            inherit system;
             pkgs = import inputs.nixpkgs { inherit system; };
           }
         );
@@ -36,11 +36,11 @@
         present. For safety, removal should
         be a manual step, even if trivial.
       */
-      version = "3.13";
+      version = "3.14";
     in
     {
       devShells = forEachSupportedSystem (
-        { pkgs }:
+        { pkgs, system }:
         let
           concatMajorMinor =
             v:
@@ -72,14 +72,18 @@
               venvVersionWarn
             '';
 
-            packages = with python.pkgs; [
-              venvShellHook
-              pip
-              ruff
-              ipython
-            ];
+            packages =
+              (with python.pkgs; [
+                venvShellHook
+                pip
+                ruff
+                ipython
+              ])
+              ++ [ self.formatter.${system} ];
           };
         }
       );
+
+      formatter = forEachSupportedSystem ({ pkgs, ... }: pkgs.nixfmt);
     };
 }

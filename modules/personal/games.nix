@@ -24,7 +24,7 @@
 
     wine-wayland
     winetricks
-    wineWowPackages.stable
+    wineWow64Packages.stable
 
     lutris
     protonup-qt
