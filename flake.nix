@@ -2,10 +2,18 @@
   description = "My config";
 
   inputs = {
-    nixpkgs = { url = "github:nixos/nixpkgs/nixos-unstable"; };
-    nixpkgs-stable = { url = "github:nixos/nixpkgs/nixos-25.05"; };
-    chaotic = { url = "github:chaotic-cx/nyx/nyxpkgs-unstable"; };
-    nix-flatpak = { url = "github:gmodena/nix-flatpak"; };
+    nixpkgs = {
+      url = "github:nixos/nixpkgs/nixos-unstable";
+    };
+    nixpkgs-stable = {
+      url = "github:nixos/nixpkgs/nixos-25.05";
+    };
+    chaotic = {
+      url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
+    };
+    nix-flatpak = {
+      url = "github:gmodena/nix-flatpak";
+    };
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -58,7 +66,10 @@
         eulogio = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules =
-            core ++ gui ++ chaoticNyx ++ [
+            core
+            ++ gui
+            ++ chaoticNyx
+            ++ [
               (mkUser "eulogio")
               (mkHost "eulogio")
               ./modules/personal/gui.nix

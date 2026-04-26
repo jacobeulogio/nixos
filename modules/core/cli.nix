@@ -8,7 +8,8 @@
     enable = true;
   };
 
-  nixpkgs.overlays = [ inputs.neovim-nightly-overlay.overlays.default ];
+  # nixpkgs.overlays = [ inputs.neovim-nightly-overlay.overlays.default ];
+
   programs.neovim = {
     enable = true;
     defaultEditor = true;
@@ -52,6 +53,8 @@
     google-cloud-sdk
     scrcpy
     duckdb
+    terraform
+    terraformer
   ];
 
   virtualisation.docker.enable = true;

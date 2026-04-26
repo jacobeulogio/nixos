@@ -12,7 +12,6 @@
     nodejs
     go
     bun
-    # opencode
 
     # Lsp
     ruff
@@ -23,7 +22,8 @@
     gopls
     nil
     beautysh
-    nodePackages_latest.prettier
+    prettier
+    terraform-ls
   ]
 ;
 }

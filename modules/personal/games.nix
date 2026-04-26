@@ -30,6 +30,8 @@
     protonup-qt
     heroic
     protontricks
+
+    ftb-app
   ];
 
   hardware.graphics = {

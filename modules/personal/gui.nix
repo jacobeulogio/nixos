@@ -9,11 +9,7 @@
     slack
     hubstaff
     gimp3
-    ventoy
-  ];
-
-  nixpkgs.config.permittedInsecurePackages = [
-    "ventoy-1.1.10"
+    netflix
   ];
 
 }
