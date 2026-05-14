@@ -19,7 +19,7 @@
   ];
 
   boot.extraModulePackages = [
-    pkgs.linuxKernel.packages.linux_6_19.v4l2loopback
+    pkgs.linuxKernel.packages.linux_7_0.v4l2loopback
   ];
 
   powerManagement.enable = true;
@@ -42,7 +42,7 @@
         CPU_ENERGY_PERF_POLICY_ON_BAT = "balance_power";
         PLATFORM_PROFILE_ON_AC = "performance";
         PLATFORM_PROFILE_ON_BAT = "balanced";
-        CPU_BOOST_ON_AC = 1;
+        CPU_BOOST_ON_AC = 0;
         CPU_BOOST_ON_BAT = 0;
         AMDGPU_ABM_LEVEL_ON_AC = 0;
         AMDGPU_ABM_LEVEL_ON_BAT = 0;
@@ -51,9 +51,14 @@
       };
     };
 
-    asusd.enable = true;
+    asusd = {
+      enable = true;
+    };
+
     supergfxd.enable = true;
   };
+
+  programs.coolercontrol.enable = true;
 
   environment.systemPackages = with pkgs; [
     supergfxctl
@@ -62,6 +67,7 @@
     v4l-utils
     android-tools
     adb-sync
+    coolercontrol.coolercontrol-gui
   ];
 
 }

@@ -26,12 +26,10 @@
     winetricks
     wineWow64Packages.stable
 
-    lutris
+    # lutris
     protonup-qt
     heroic
     protontricks
-
-    ftb-app
   ];
 
   hardware.graphics = {
