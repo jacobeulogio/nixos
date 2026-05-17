@@ -42,7 +42,7 @@
         CPU_ENERGY_PERF_POLICY_ON_BAT = "balance_power";
         PLATFORM_PROFILE_ON_AC = "performance";
         PLATFORM_PROFILE_ON_BAT = "balanced";
-        CPU_BOOST_ON_AC = 0;
+        CPU_BOOST_ON_AC = 1;
         CPU_BOOST_ON_BAT = 0;
         AMDGPU_ABM_LEVEL_ON_AC = 0;
         AMDGPU_ABM_LEVEL_ON_BAT = 0;
@@ -58,8 +58,6 @@
     supergfxd.enable = true;
   };
 
-  programs.coolercontrol.enable = true;
-
   environment.systemPackages = with pkgs; [
     supergfxctl
     asusctl
@@ -67,7 +65,6 @@
     v4l-utils
     android-tools
     adb-sync
-    coolercontrol.coolercontrol-gui
   ];
 
 }
