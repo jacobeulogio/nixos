@@ -16,6 +16,7 @@
     vial
     mpv
     vlc
+    unetbootin
     # zoom-us
   ];
 
