@@ -25,6 +25,7 @@
     hyprpaper
     waybar
     xdg-desktop-portal-hyprland
+    xdg-desktop-portal-gtk
     grim
     slurp
     libsForQt5.qt5ct

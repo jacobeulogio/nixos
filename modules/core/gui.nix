@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 {
 
   # Gnome
@@ -11,14 +11,22 @@
   services.desktopManager.gnome.enable = true;
 
   environment.systemPackages = with pkgs; [
-    qutebrowser python313Packages.adblock
+    qutebrowser
+    python313Packages.adblock
     vivaldi
     vial
     mpv
     vlc
-    unetbootin
+    ventoy
+    inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
     # zoom-us
   ];
+
+  nixpkgs.config = {
+    permittedInsecurePackages = [
+      "ventoy-1.1.12"
+    ];
+  };
 
   programs.obs-studio = {
     enable = true;
@@ -63,6 +71,5 @@
     nerd-fonts.jetbrains-mono
     nerd-fonts.geist-mono
   ];
-
 
 }
