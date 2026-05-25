@@ -1,7 +1,5 @@
 {
   pkgs,
-  chaotic,
-  lib,
   ...
 }:
 {
