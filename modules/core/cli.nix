@@ -56,6 +56,7 @@
     qmk
     opencode
     parallel
+    aria2
 
     # work
     google-cloud-sdk
