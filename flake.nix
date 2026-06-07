@@ -84,6 +84,20 @@
             ];
         };
 
+        pc = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules =
+            core
+            ++ gui
+            ++ chaoticNyx
+            ++ [
+              (mkUser "eulogio")
+              (mkHost "eulogio-pc")
+              ./modules/personal/gui.nix
+              ./modules/personal/games.nix
+            ];
+        };
+
         # thd = nixpkgs.lib.nixosSystem {
         #   system = "x86_64-linux";
         #   modules = core ++ gui ++ work ++ [
