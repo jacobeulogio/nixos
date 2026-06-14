@@ -14,6 +14,21 @@
     localNetworkGameTransfers.openFirewall = true;
   };
 
+  systemd.user.services.steam-bigpicture = {
+    enable = true;
+    description = "Steam Big Picture";
+
+    # Only start after Hyprland / the graphical session is ready
+    wantedBy = [ "graphical-session.target" ];
+    after = [ "graphical-session.target" ];
+
+    serviceConfig = {
+      ExecStart = "${pkgs.steam}/bin/steam -gamepadui -steamos3";
+      Restart = "on-failure";
+      RestartSec = "5s";
+    };
+  };
+
   programs.gamemode.enable = true;
   # chaotic.mesa-git.enable = true;
 
@@ -26,16 +41,22 @@
     winetricks
     wineWow64Packages.stable
 
-    # lutris
+    lutris
     protonup-qt
     heroic
     protontricks
+
+    # lossless scaling
+    lsfg-vk
+    lsfg-vk-ui
+
   ];
 
   hardware.graphics = {
     enable = true;
     enable32Bit = true;
   };
+
   services.xserver.videoDrivers = [ "amdgpu" ];
 
 }

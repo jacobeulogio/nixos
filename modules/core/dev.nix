@@ -23,7 +23,6 @@
     nil
     beautysh
     prettier
-    terraform-ls
   ]
 ;
 }

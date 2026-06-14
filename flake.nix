@@ -6,7 +6,7 @@
       url = "github:nixos/nixpkgs/nixos-unstable";
     };
     nixpkgs-stable = {
-      url = "github:nixos/nixpkgs/nixos-25.05";
+      url = "github:nixos/nixpkgs/nixos-26.05";
     };
     chaotic = {
       url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
@@ -62,9 +62,7 @@
         ./modules/work/packages.nix
       ];
       chaoticNyx = [
-        chaotic.nixosModules.nyx-cache
-        chaotic.nixosModules.nyx-overlay
-        chaotic.nixosModules.nyx-registry
+        chaotic.nixosModules.default
       ];
     in
     {

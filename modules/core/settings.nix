@@ -5,9 +5,8 @@
 }:
 {
   boot.kernelPackages = pkgs.linuxPackages_latest;
-  # boot.kernelPackages = pkgs.linuxPackages_6_19;
 
-  # programs.nix-ld.enable = true;
+  programs.nix-ld.enable = true;
 
   # Nix
   nix = {

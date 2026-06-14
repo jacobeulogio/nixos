@@ -57,13 +57,7 @@
     opencode
     parallel
     aria2
-
-    # work
-    google-cloud-sdk
-    scrcpy
-    duckdb
-    terraform
-    terraformer
+    btop
   ];
 
   virtualisation.docker.enable = true;

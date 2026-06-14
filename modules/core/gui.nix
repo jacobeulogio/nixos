@@ -7,6 +7,9 @@
     autoSuspend = false;
   };
 
+  services.displayManager.autoLogin.enable = true;
+  services.displayManager.autoLogin.user = "eulogio";
+
   services.desktopManager.gnome.enable = true;
 
   environment.systemPackages = with pkgs; [
