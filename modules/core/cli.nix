@@ -55,6 +55,7 @@
     parallel
     aria2
     btop
+    uv
 
     # Lsp for nvim 
     ruff

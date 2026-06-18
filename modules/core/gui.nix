@@ -1,10 +1,23 @@
 { pkgs, inputs, ... }:
 {
 
-  # Gnome
-  services.displayManager.gdm = {
+  # # Gnome
+  # services.displayManager.gdm = {
+  #   enable = true;
+  #   autoSuspend = false;
+  # };
+
+  programs.noctalia-greeter = {
     enable = true;
-    autoSuspend = false;
+    package = inputs.noctalia-greeter.packages.${pkgs.stdenv.hostPlatform.system}.default;
+
+    # Optional configuration
+    greeter-args = "";
+    settings.cursor = {
+      theme = "Adwaita";
+      size = 24;
+      package = pkgs.adwaita-icon-theme;
+    };
   };
 
   services.displayManager.autoLogin.enable = true;

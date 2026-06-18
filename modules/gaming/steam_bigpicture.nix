@@ -4,6 +4,9 @@
 }:
 {
 
+  services.displayManager.autoLogin.enable = true;
+  services.displayManager.autoLogin.user = "eulogio";
+
   systemd.user.services.steam-bigpicture = {
     enable = true;
     description = "Steam Big Picture";

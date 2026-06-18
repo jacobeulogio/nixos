@@ -1,6 +1,6 @@
 {
-  config,
   pkgs,
+  inputs,
   ...
 }: {
   programs.hyprland = {
@@ -34,5 +34,8 @@
     kdePackages.qtwayland
     libnotify
     brightnessctl
+
+    # noctalia
+    inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
 }

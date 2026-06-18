@@ -30,6 +30,16 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    noctalia = {
+      url = "github:noctalia-dev/noctalia";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    noctalia-greeter = {
+      url = "github:noctalia-dev/noctalia-greeter";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
   };
 
   outputs =
@@ -49,6 +59,7 @@
         ./modules/core/cli.nix
         ./modules/core/settings.nix
         home-manager.nixosModules.home-manager
+        inputs.noctalia-greeter.nixosModules.default
         { _module.args = { inherit inputs; }; }
       ];
 
