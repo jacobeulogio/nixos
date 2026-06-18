@@ -13,13 +13,6 @@
     "amdgpu.ppfeaturemask=0xffffffff"
   ];
 
-  boot.kernelModules = [
-    "v4l2loopback"
-  ];
-
-  boot.extraModulePackages = [
-    pkgs.linuxKernel.packages.linux_7_0.v4l2loopback
-  ];
 
   powerManagement.enable = true;
 
