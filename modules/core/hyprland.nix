@@ -36,6 +36,6 @@
     brightnessctl
 
     # noctalia
-    inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
+    # inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
 }

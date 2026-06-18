@@ -90,6 +90,7 @@
     noto-fonts
     noto-fonts-color-emoji
     nerd-fonts.geist-mono
+    nerd-fonts.jetbrains-mono
   ];
 
 }
