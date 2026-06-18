@@ -25,4 +25,13 @@
     prettier
   ]
 ;
+
+  services.flatpak = {
+    enable = true;
+    packages = [
+      "io.dbeaver.DBeaverCommunity"
+    ];
+  };
+
+  virtualisation.docker.enable = true;
 }

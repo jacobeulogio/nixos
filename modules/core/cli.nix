@@ -13,9 +13,6 @@
   programs.neovim = {
     enable = true;
     defaultEditor = true;
-    # plugins = with pkgs.vimPlugins; [
-    #   nvim-treesitter
-    # ];
   };
 
   environment.systemPackages = with pkgs; [
@@ -60,5 +57,4 @@
     btop
   ];
 
-  virtualisation.docker.enable = true;
 }

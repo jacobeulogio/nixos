@@ -1,3 +1,4 @@
+
 {
   pkgs,
   ...
@@ -59,7 +60,6 @@
   environment.systemPackages = with pkgs; [
     supergfxctl
     asusctl
-    linuxKernel.packages.linux_zen.cpupower
     v4l-utils
     android-tools
     adb-sync

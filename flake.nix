@@ -51,16 +51,17 @@
         home-manager.nixosModules.home-manager
         { _module.args = { inherit inputs; }; }
       ];
+
       gui = [
-        ./modules/core/dev.nix
         ./modules/core/gui.nix
         ./modules/core/hyprland.nix
         nix-flatpak.nixosModules.nix-flatpak
       ];
-      work = [
-        ./modules/work/home.nix
-        ./modules/work/packages.nix
+
+      dev = [
+        ./modules/core/dev.nix
       ];
+
       chaoticNyx = [
         chaotic.nixosModules.default
       ];
@@ -72,13 +73,13 @@
           modules =
             core
             ++ gui
-            ++ chaoticNyx
+            ++ dev
             ++ [
               (mkUser "eulogio")
               (mkHost "eulogio")
-              ./modules/personal/gui.nix
-              ./modules/personal/games.nix
-              ./modules/personal/laptop_amd.nix
+              ./modules/laptop
+              ./modules/gaming
+              ./modules/work
             ];
         };
 
@@ -91,8 +92,8 @@
             ++ [
               (mkUser "eulogio")
               (mkHost "eulogio-pc")
-              ./modules/personal/gui.nix
-              ./modules/personal/games.nix
+              ./modules/gaming
+              ./modules/gaming/steam_bigpicture.nix
             ];
         };
 

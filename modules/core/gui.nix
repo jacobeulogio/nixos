@@ -13,16 +13,32 @@
   services.desktopManager.gnome.enable = true;
 
   environment.systemPackages = with pkgs; [
+
+    # Browsers
     qutebrowser
     python313Packages.adblock
     vivaldi
+
+    # Custom Keybaords
     vial
+
+    # Media
     mpv
     vlc
+    spotify
+    netflix
+    gimp3
+
+    # Other
+    qbittorrent-enhanced
     ventoy
-    inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
-    # zoom-us
   ];
+
+  services.flatpak = {
+    enable = true;
+    packages = [
+    ];
+  };
 
   nixpkgs.config = {
     permittedInsecurePackages = [
@@ -55,13 +71,6 @@
     BROWSER = "qutebrowser";
   };
 
-  services.flatpak = {
-    enable = true;
-    packages = [
-      "io.dbeaver.DBeaverCommunity"
-    ];
-  };
-
   services.udev.packages = with pkgs; [
     via
     vial
@@ -70,7 +79,6 @@
   fonts.packages = with pkgs; [
     noto-fonts
     noto-fonts-color-emoji
-    nerd-fonts.jetbrains-mono
     nerd-fonts.geist-mono
   ];
 
