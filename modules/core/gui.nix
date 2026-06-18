@@ -1,27 +1,24 @@
 { pkgs, inputs, ... }:
 {
 
-  # # Gnome
-  # services.displayManager.gdm = {
-  #   enable = true;
-  #   autoSuspend = false;
-  # };
-
-  programs.noctalia-greeter = {
+  # Gnome
+  services.displayManager.gdm = {
     enable = true;
-    package = inputs.noctalia-greeter.packages.${pkgs.stdenv.hostPlatform.system}.default;
-
-    # Optional configuration
-    greeter-args = "";
-    settings.cursor = {
-      theme = "Adwaita";
-      size = 24;
-      package = pkgs.adwaita-icon-theme;
-    };
+    autoSuspend = false;
   };
 
-  services.displayManager.autoLogin.enable = true;
-  services.displayManager.autoLogin.user = "eulogio";
+  # programs.noctalia-greeter = {
+  #   enable = true;
+  #   package = inputs.noctalia-greeter.packages.${pkgs.stdenv.hostPlatform.system}.default;
+  #
+  #   # Optional configuration
+  #   greeter-args = "";
+  #   settings.cursor = {
+  #     theme = "Adwaita";
+  #     size = 24;
+  #     package = pkgs.adwaita-icon-theme;
+  #   };
+  # };
 
   services.desktopManager.gnome.enable = true;
 
