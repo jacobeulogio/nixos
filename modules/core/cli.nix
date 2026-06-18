@@ -55,6 +55,17 @@
     parallel
     aria2
     btop
+
+    # Lsp for nvim 
+    ruff
+    python313Packages.python-lsp-server
+    rust-analyzer
+    lua-language-server
+    stylua
+    gopls
+    nil
+    beautysh
+    prettier
   ];
 
 }
