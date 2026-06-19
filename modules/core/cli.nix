@@ -10,6 +10,11 @@
 
   # nixpkgs.overlays = [ inputs.neovim-nightly-overlay.overlays.default ];
 
+  # FOR NH
+  environment.sessionVariables = {
+    NH_FLAKE = "/home/eulogio/nixos";
+  };
+
   programs.neovim = {
     enable = true;
     defaultEditor = true;
@@ -32,6 +37,7 @@
     zsh-powerlevel10k
 
     # utils
+    nh
     atuin
     yazi
     stow
@@ -57,7 +63,7 @@
     btop
     uv
 
-    # Lsp for nvim 
+    # Lsp for nvim
     ruff
     python313Packages.python-lsp-server
     rust-analyzer

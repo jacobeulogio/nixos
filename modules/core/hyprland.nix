@@ -2,7 +2,8 @@
   pkgs,
   inputs,
   ...
-}: {
+}:
+{
   programs.hyprland = {
     enable = true;
     xwayland.enable = true;
@@ -34,6 +35,9 @@
     kdePackages.qtwayland
     libnotify
     brightnessctl
+
+    # Share Picker
+    inputs.hyprland-preview-share-picker.packages.${pkgs.stdenv.hostPlatform.system}.default
 
     # noctalia
     # inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default

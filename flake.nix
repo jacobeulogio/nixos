@@ -40,6 +40,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    hyprland-preview-share-picker = {
+      url = "git+https://github.com/WhySoBad/hyprland-preview-share-picker";
+      # You may optionally override the nixpkgs input to save space.
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
   };
 
   outputs =
@@ -94,7 +100,7 @@
             ];
         };
 
-        pc = nixpkgs.lib.nixosSystem {
+        eulogio-pc = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules =
             core
