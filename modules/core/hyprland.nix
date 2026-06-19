@@ -37,7 +37,7 @@
     brightnessctl
 
     # Share Picker
-    inputs.hyprland-preview-share-picker.packages.${pkgs.stdenv.hostPlatform.system}.default
+    # inputs.hyprland-preview-share-picker.packages.${pkgs.stdenv.hostPlatform.system}.default
 
     # noctalia
     # inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default

@@ -40,11 +40,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    hyprland-preview-share-picker = {
-      url = "git+https://github.com/WhySoBad/hyprland-preview-share-picker";
-      # You may optionally override the nixpkgs input to save space.
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # hyprland-preview-share-picker = {
+    #   url = "git+https://github.com/WhySoBad/hyprland-preview-share-picker";
+    #   # You may optionally override the nixpkgs input to save space.
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
 
   };
 

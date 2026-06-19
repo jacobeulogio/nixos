@@ -23,10 +23,10 @@
   services.desktopManager.gnome.enable = true;
 
   environment.systemPackages = with pkgs; [
-
     # Browsers
     qutebrowser
     python313Packages.adblock
+    imwheel
     vivaldi
 
     # Custom Keybaords
