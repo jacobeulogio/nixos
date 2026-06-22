@@ -27,6 +27,7 @@
 
     lutris
     protonup-qt
+    protonplus
     heroic
     protontricks
 
