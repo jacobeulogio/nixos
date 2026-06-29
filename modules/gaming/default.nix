@@ -17,14 +17,15 @@
   # chaotic.mesa-git.enable = true;
 
   environment.systemPackages = with pkgs; [
-    mangohud
-    goverlay
+    # goverlay
     discord
 
     wine-wayland
     winetricks
     wineWow64Packages.stable
 
+
+    faugus-launcher
     lutris
     protonup-qt
     protonplus
@@ -37,6 +38,13 @@
 
     lact
   ];
+    
+  services.flatpak = {
+    enable = true;
+    packages = [
+      "io.github.benjamimgois.goverlay"
+    ];
+  };
 
   hardware.graphics = {
     enable = true;
