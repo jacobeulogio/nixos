@@ -111,6 +111,7 @@
               (mkHost "eulogio-pc")
               ./modules/gaming
               ./modules/gaming/steam_bigpicture.nix
+              ./modules/core/secure_boot.nix
             ];
         };
 
