@@ -37,6 +37,7 @@
     lsfg-vk-ui
 
     lact
+    steamcmd
   ];
     
   services.flatpak = {

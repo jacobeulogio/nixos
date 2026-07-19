@@ -46,6 +46,8 @@
     #   inputs.nixpkgs.follows = "nixpkgs";
     # };
 
+    playit-nixos-module.url = "github:pedorich-n/playit-nixos-module";
+
   };
 
   outputs =
