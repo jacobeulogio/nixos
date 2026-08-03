@@ -27,6 +27,7 @@
     qutebrowser
     python313Packages.adblock
     vivaldi
+    firefox
 
     # Custom Keybaords
     vial

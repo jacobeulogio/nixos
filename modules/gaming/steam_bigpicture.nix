@@ -7,7 +7,7 @@
   services.displayManager.autoLogin.enable = true;
   services.displayManager.autoLogin.user = "eulogio";
 
-  systemd.user.services.steam-bigpicture = {
+  systemd.user.services.steam-autostart = {
     enable = true;
     description = "Steam Big Picture";
 
