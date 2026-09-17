@@ -66,6 +66,7 @@
       core = [
         ./modules/core/cli.nix
         ./modules/core/settings.nix
+        ./modules/core/input.nix
         home-manager.nixosModules.home-manager
         inputs.noctalia-greeter.nixosModules.default
         { _module.args = { inherit inputs; }; }
