@@ -63,6 +63,10 @@
     btop
     uv
 
+    # pdf
+    pandoc
+    texliveFull
+
     # Lsp for nvim
     ruff
     python313Packages.python-lsp-server

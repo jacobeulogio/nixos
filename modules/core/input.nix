@@ -18,6 +18,8 @@
 
   environment.systemPackages = with pkgs; [
     kdePackages.fcitx5-configtool
+    librime
+    rime-data
   ];
 
   system.stateVersion = "25.05";
