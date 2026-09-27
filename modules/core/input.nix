@@ -12,6 +12,7 @@
       rime-data
       fcitx5-gtk
       fcitx5-rime
+      librime
     ];
   };
 
