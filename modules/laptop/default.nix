@@ -55,7 +55,7 @@
     asusctl
     v4l-utils
     android-tools
-    adb-sync
+    better-adb-sync
   ];
 
 }
