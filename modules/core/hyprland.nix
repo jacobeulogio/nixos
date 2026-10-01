@@ -6,6 +6,7 @@
 {
   programs.hyprland = {
     enable = true;
+    withUWSM = true; 
     xwayland.enable = true;
   };
 
@@ -31,11 +32,13 @@
     slurp
     libsForQt5.qt5ct
     qt5.qtwayland
+    qt6.qtwayland
     kdePackages.qt6ct
     kdePackages.qtwayland
     libnotify
     brightnessctl
 
+    # xdg-desktop-portal-wlr
     # Share Picker
     # inputs.hyprland-preview-share-picker.packages.${pkgs.stdenv.hostPlatform.system}.default
 

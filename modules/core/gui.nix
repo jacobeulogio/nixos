@@ -23,6 +23,7 @@
   services.desktopManager.gnome.enable = true;
 
   environment.systemPackages = with pkgs; [
+
     # Browsers
     qutebrowser
     python313Packages.adblock
@@ -42,6 +43,7 @@
     # Other
     qbittorrent-enhanced
     ventoy
+    inputs.zennotes.packages.${pkgs.system}.zennotes-desktop
   ];
 
   services.flatpak = {

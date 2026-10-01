@@ -78,8 +78,12 @@
 
   xdg.portal = {
     enable = true;
-    wlr.enable = true;
-    extraPortals = [ pkgs.xdg-desktop-portal-hyprland ];
+    # wlr.enable = true;
+    extraPortals = [
+      pkgs.xdg-desktop-portal-hyprland
+      pkgs.xdg-desktop-portal-gtk
+      # pkgs.xdg_desktop_portal_wlr
+    ];
   };
 
   hardware.keyboard.qmk.enable = true;

@@ -65,7 +65,7 @@
 
     # pdf
     pandoc
-    texliveFull
+    texliveMedium
 
     # Lsp for nvim
     ruff

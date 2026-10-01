@@ -13,6 +13,7 @@
       fcitx5-gtk
       fcitx5-rime
       librime
+      fcitx5-m17n
     ];
   };
 
