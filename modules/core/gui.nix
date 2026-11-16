@@ -95,4 +95,7 @@
     nerd-fonts.jetbrains-mono
   ];
 
+  programs.appimage.enable = true;
+  programs.appimage.binfmt = true;
+
 }
